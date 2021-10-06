@@ -3,12 +3,14 @@ project(Place_recognization)
 
 set(CMAKE_CXX_STANDARD 14)
 # set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} "/opt/homebrew/Cellar/qt@5/5.15.2/lib/cmake/Qt5")
+if(NOT DEFINED CMAKE_SUPPRESS_DEVELOPER_WARNINGS)
+    set(CMAKE_SUPPRESS_DEVELOPER_WARNINGS 1 CACHE INTERNAL "No dev warnings")
+endif()
 
 find_package(OpenCV 3 REQUIRED)
-find_package(PCL REQUIRED COMPONENTS common io)
+find_package(PCL REQUIRED)
 find_package(Boost REQUIRED)
 find_package(Eigen3 REQUIRED)
-find_package(vtk 9 REQUIRED)
 
 include_directories(${PCL_INCLUDE_DIRS}
         ${Boost_INCLUDE_DIRS}

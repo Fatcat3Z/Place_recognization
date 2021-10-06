@@ -70,9 +70,11 @@ void extractsegments::filtercloud(pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud, pc
         // vise-versa, remove the ground not just extract the ground
         // just setNegative to be true
         cout << "filter done."<<endl;
-//        pcl::visualization::CloudViewer viewer("Cloud viewer");
-//        viewer.showCloud(cloud_filtered);
-
+       boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer(new pcl::visualization::PCLVisualizer(" cloud viewer"));
+       viewer->setBackgroundColor(0, 0, 0);
+       viewer->addPointCloud(cloud_filtered, "fliter cloud");
+       viewer->addCoordinateSystem(1.0);
+       viewer->spin();
     }else{
         cout<<"no raw PointCloud data!"<<endl;
     }
