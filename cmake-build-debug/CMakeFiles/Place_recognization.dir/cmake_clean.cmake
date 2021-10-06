@@ -1,10 +1,9 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Place_recognization.dir/extract_segments.cpp.o"
-  "CMakeFiles/Place_recognization.dir/main.cpp.o"
-  "CMakeFiles/Place_recognization.dir/projection.cpp.o"
-  "CMakeFiles/Place_recognization.dir/spatial_calculation.cpp.o"
-  "Place_recognization"
-  "Place_recognization.pdb"
+  "CMakeFiles/Place_recognization.dir/src/extract_segments.cpp.o"
+  "CMakeFiles/Place_recognization.dir/src/projection.cpp.o"
+  "CMakeFiles/Place_recognization.dir/src/spatial_calculation.cpp.o"
+  "libPlace_recognization.dylib"
+  "libPlace_recognization.pdb"
 )
 
 # Per-language clean rules from dependency scanning.

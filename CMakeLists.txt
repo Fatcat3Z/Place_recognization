@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.17)
 project(Place_recognization)
 
 set(CMAKE_CXX_STANDARD 14)
-set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} "/opt/homebrew/Cellar/qt@5/5.15.2/lib/cmake/Qt5")
+# set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} "/opt/homebrew/Cellar/qt@5/5.15.2/lib/cmake/Qt5")
 
 find_package(OpenCV 3 REQUIRED)
 find_package(PCL REQUIRED COMPONENTS common io)
@@ -13,9 +13,21 @@ find_package(vtk 9 REQUIRED)
 include_directories(${PCL_INCLUDE_DIRS}
         ${Boost_INCLUDE_DIRS}
         ${EIGEN3_INCLUDE_DIR}
-        ${VTK_INCLUDE_DIR})
+        ${VTK_INCLUDE_DIR}
+        ${PROJECT_SOURCE_DIR}
+        ${PROJECT_SOURCE_DIR}/include)
 link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
 
-add_executable(Place_recognization main.cpp projection.cpp projection.h spatial_calculation.h spatial_calculation.cpp extract_segments.h extract_segments.cpp)
-target_link_libraries(Place_recognization ${OpenCV_LIBS} ${Boost_LIBS} ${PCL_LIBS} ${VTK_LIBS})
+add_library(${PROJECT_NAME} SHARED
+        src/extract_segments.cpp
+        src/projection.cpp
+        src/spatial_calculation.cpp)
+target_link_libraries(${PROJECT_NAME}
+        ${OpenCV_LIBS}
+        ${EIGEN3_LIBS}
+        ${PCL_LIBRARIES}
+        ${VTK_LIBRARIES}
+        )
+add_executable(prtest main.cpp)
+target_link_libraries(prtest ${PROJECT_NAME})

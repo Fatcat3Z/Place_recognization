@@ -131,6 +131,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named prtest
+
+# Build rule for target.
+prtest: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 prtest
+.PHONY : prtest
+
+# fast build rule for target.
+prtest/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/prtest.dir/build.make CMakeFiles/prtest.dir/build
+.PHONY : prtest/fast
+
+#=============================================================================
 # Target rules for targets named Place_recognization
 
 # Build rule for target.
@@ -143,40 +156,13 @@ Place_recognization/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Place_recognization.dir/build.make CMakeFiles/Place_recognization.dir/build
 .PHONY : Place_recognization/fast
 
-extract_segments.o: extract_segments.cpp.o
-
-.PHONY : extract_segments.o
-
-# target to build an object file
-extract_segments.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Place_recognization.dir/build.make CMakeFiles/Place_recognization.dir/extract_segments.cpp.o
-.PHONY : extract_segments.cpp.o
-
-extract_segments.i: extract_segments.cpp.i
-
-.PHONY : extract_segments.i
-
-# target to preprocess a source file
-extract_segments.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Place_recognization.dir/build.make CMakeFiles/Place_recognization.dir/extract_segments.cpp.i
-.PHONY : extract_segments.cpp.i
-
-extract_segments.s: extract_segments.cpp.s
-
-.PHONY : extract_segments.s
-
-# target to generate assembly for a file
-extract_segments.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Place_recognization.dir/build.make CMakeFiles/Place_recognization.dir/extract_segments.cpp.s
-.PHONY : extract_segments.cpp.s
-
 main.o: main.cpp.o
 
 .PHONY : main.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Place_recognization.dir/build.make CMakeFiles/Place_recognization.dir/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/prtest.dir/build.make CMakeFiles/prtest.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -185,7 +171,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Place_recognization.dir/build.make CMakeFiles/Place_recognization.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/prtest.dir/build.make CMakeFiles/prtest.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -194,62 +180,89 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Place_recognization.dir/build.make CMakeFiles/Place_recognization.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/prtest.dir/build.make CMakeFiles/prtest.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-projection.o: projection.cpp.o
+src/extract_segments.o: src/extract_segments.cpp.o
 
-.PHONY : projection.o
-
-# target to build an object file
-projection.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Place_recognization.dir/build.make CMakeFiles/Place_recognization.dir/projection.cpp.o
-.PHONY : projection.cpp.o
-
-projection.i: projection.cpp.i
-
-.PHONY : projection.i
-
-# target to preprocess a source file
-projection.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Place_recognization.dir/build.make CMakeFiles/Place_recognization.dir/projection.cpp.i
-.PHONY : projection.cpp.i
-
-projection.s: projection.cpp.s
-
-.PHONY : projection.s
-
-# target to generate assembly for a file
-projection.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Place_recognization.dir/build.make CMakeFiles/Place_recognization.dir/projection.cpp.s
-.PHONY : projection.cpp.s
-
-spatial_calculation.o: spatial_calculation.cpp.o
-
-.PHONY : spatial_calculation.o
+.PHONY : src/extract_segments.o
 
 # target to build an object file
-spatial_calculation.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Place_recognization.dir/build.make CMakeFiles/Place_recognization.dir/spatial_calculation.cpp.o
-.PHONY : spatial_calculation.cpp.o
+src/extract_segments.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Place_recognization.dir/build.make CMakeFiles/Place_recognization.dir/src/extract_segments.cpp.o
+.PHONY : src/extract_segments.cpp.o
 
-spatial_calculation.i: spatial_calculation.cpp.i
+src/extract_segments.i: src/extract_segments.cpp.i
 
-.PHONY : spatial_calculation.i
+.PHONY : src/extract_segments.i
 
 # target to preprocess a source file
-spatial_calculation.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Place_recognization.dir/build.make CMakeFiles/Place_recognization.dir/spatial_calculation.cpp.i
-.PHONY : spatial_calculation.cpp.i
+src/extract_segments.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Place_recognization.dir/build.make CMakeFiles/Place_recognization.dir/src/extract_segments.cpp.i
+.PHONY : src/extract_segments.cpp.i
 
-spatial_calculation.s: spatial_calculation.cpp.s
+src/extract_segments.s: src/extract_segments.cpp.s
 
-.PHONY : spatial_calculation.s
+.PHONY : src/extract_segments.s
 
 # target to generate assembly for a file
-spatial_calculation.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Place_recognization.dir/build.make CMakeFiles/Place_recognization.dir/spatial_calculation.cpp.s
-.PHONY : spatial_calculation.cpp.s
+src/extract_segments.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Place_recognization.dir/build.make CMakeFiles/Place_recognization.dir/src/extract_segments.cpp.s
+.PHONY : src/extract_segments.cpp.s
+
+src/projection.o: src/projection.cpp.o
+
+.PHONY : src/projection.o
+
+# target to build an object file
+src/projection.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Place_recognization.dir/build.make CMakeFiles/Place_recognization.dir/src/projection.cpp.o
+.PHONY : src/projection.cpp.o
+
+src/projection.i: src/projection.cpp.i
+
+.PHONY : src/projection.i
+
+# target to preprocess a source file
+src/projection.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Place_recognization.dir/build.make CMakeFiles/Place_recognization.dir/src/projection.cpp.i
+.PHONY : src/projection.cpp.i
+
+src/projection.s: src/projection.cpp.s
+
+.PHONY : src/projection.s
+
+# target to generate assembly for a file
+src/projection.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Place_recognization.dir/build.make CMakeFiles/Place_recognization.dir/src/projection.cpp.s
+.PHONY : src/projection.cpp.s
+
+src/spatial_calculation.o: src/spatial_calculation.cpp.o
+
+.PHONY : src/spatial_calculation.o
+
+# target to build an object file
+src/spatial_calculation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Place_recognization.dir/build.make CMakeFiles/Place_recognization.dir/src/spatial_calculation.cpp.o
+.PHONY : src/spatial_calculation.cpp.o
+
+src/spatial_calculation.i: src/spatial_calculation.cpp.i
+
+.PHONY : src/spatial_calculation.i
+
+# target to preprocess a source file
+src/spatial_calculation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Place_recognization.dir/build.make CMakeFiles/Place_recognization.dir/src/spatial_calculation.cpp.i
+.PHONY : src/spatial_calculation.cpp.i
+
+src/spatial_calculation.s: src/spatial_calculation.cpp.s
+
+.PHONY : src/spatial_calculation.s
+
+# target to generate assembly for a file
+src/spatial_calculation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Place_recognization.dir/build.make CMakeFiles/Place_recognization.dir/src/spatial_calculation.cpp.s
+.PHONY : src/spatial_calculation.cpp.s
 
 # Help Target
 help:
@@ -260,18 +273,19 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Place_recognization"
-	@echo "... extract_segments.o"
-	@echo "... extract_segments.i"
-	@echo "... extract_segments.s"
+	@echo "... prtest"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... projection.o"
-	@echo "... projection.i"
-	@echo "... projection.s"
-	@echo "... spatial_calculation.o"
-	@echo "... spatial_calculation.i"
-	@echo "... spatial_calculation.s"
+	@echo "... src/extract_segments.o"
+	@echo "... src/extract_segments.i"
+	@echo "... src/extract_segments.s"
+	@echo "... src/projection.o"
+	@echo "... src/projection.i"
+	@echo "... src/projection.s"
+	@echo "... src/spatial_calculation.o"
+	@echo "... src/spatial_calculation.i"
+	@echo "... src/spatial_calculation.s"
 .PHONY : help
 
 

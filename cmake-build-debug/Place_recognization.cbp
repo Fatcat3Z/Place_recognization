@@ -37,8 +37,8 @@
 					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="Place_recognization">
-				<Option output="/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/cmake-build-debug/Place_recognization" prefix_auto="0" extension_auto="0"/>
+			<Target title="prtest">
+				<Option output="/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/cmake-build-debug/prtest" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -46,11 +46,107 @@
 				<Compiler>
 					<Add option="-DDISABLE_PCAP"/>
 					<Add option="-DDISABLE_PNG"/>
+					<Add option="-DQT_WIDGETS_LIB"/>
+					<Add option="-DQT_GUI_LIB"/>
+					<Add option="-DQT_CORE_LIB"/>
+					<Add directory="/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization"/>
+					<Add directory="/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/include"/>
 					<Add directory="/opt/homebrew/include/pcl-1.12"/>
 					<Add directory="/opt/homebrew/include/eigen3"/>
 					<Add directory="/opt/homebrew/include"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/usr/local/include/opencv"/>
+					<Add directory="/opt/homebrew/include/vtk-9.0"/>
+					<Add directory="/opt/homebrew/Cellar/qt@5/5.15.2/lib/QtWidgets.framework"/>
+					<Add directory="/opt/homebrew/Cellar/qt@5/5.15.2/lib/QtWidgets.framework/Headers"/>
+					<Add directory="/opt/homebrew/Cellar/qt@5/5.15.2/lib/QtGui.framework"/>
+					<Add directory="/opt/homebrew/Cellar/qt@5/5.15.2/lib/QtGui.framework/Headers"/>
+					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/System/Library/Frameworks/OpenGL.framework/Headers"/>
+					<Add directory="/opt/homebrew/Cellar/qt@5/5.15.2/lib/QtCore.framework"/>
+					<Add directory="/opt/homebrew/Cellar/qt@5/5.15.2/lib/QtCore.framework/Headers"/>
+					<Add directory="/opt/homebrew/Cellar/qt@5/5.15.2/./mkspecs/macx-clang-arm64"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/12.0.5/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/cmake-build-debug/Makefile&quot;  VERBOSE=1 prtest"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="prtest/fast">
+				<Option output="/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/cmake-build-debug/prtest" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DDISABLE_PCAP"/>
+					<Add option="-DDISABLE_PNG"/>
+					<Add option="-DQT_WIDGETS_LIB"/>
+					<Add option="-DQT_GUI_LIB"/>
+					<Add option="-DQT_CORE_LIB"/>
+					<Add directory="/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization"/>
+					<Add directory="/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/include"/>
+					<Add directory="/opt/homebrew/include/pcl-1.12"/>
+					<Add directory="/opt/homebrew/include/eigen3"/>
+					<Add directory="/opt/homebrew/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/local/include/opencv"/>
+					<Add directory="/opt/homebrew/include/vtk-9.0"/>
+					<Add directory="/opt/homebrew/Cellar/qt@5/5.15.2/lib/QtWidgets.framework"/>
+					<Add directory="/opt/homebrew/Cellar/qt@5/5.15.2/lib/QtWidgets.framework/Headers"/>
+					<Add directory="/opt/homebrew/Cellar/qt@5/5.15.2/lib/QtGui.framework"/>
+					<Add directory="/opt/homebrew/Cellar/qt@5/5.15.2/lib/QtGui.framework/Headers"/>
+					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/System/Library/Frameworks/OpenGL.framework/Headers"/>
+					<Add directory="/opt/homebrew/Cellar/qt@5/5.15.2/lib/QtCore.framework"/>
+					<Add directory="/opt/homebrew/Cellar/qt@5/5.15.2/lib/QtCore.framework/Headers"/>
+					<Add directory="/opt/homebrew/Cellar/qt@5/5.15.2/./mkspecs/macx-clang-arm64"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/12.0.5/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/cmake-build-debug/Makefile&quot;  VERBOSE=1 prtest/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Place_recognization">
+				<Option output="/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/cmake-build-debug/libPlace_recognization.dylib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DDISABLE_PCAP"/>
+					<Add option="-DDISABLE_PNG"/>
+					<Add option="-DQT_WIDGETS_LIB"/>
+					<Add option="-DQT_GUI_LIB"/>
+					<Add option="-DQT_CORE_LIB"/>
+					<Add directory="/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization"/>
+					<Add directory="/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/include"/>
+					<Add directory="/opt/homebrew/include/pcl-1.12"/>
+					<Add directory="/opt/homebrew/include/eigen3"/>
+					<Add directory="/opt/homebrew/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/local/include/opencv"/>
+					<Add directory="/opt/homebrew/include/vtk-9.0"/>
+					<Add directory="/opt/homebrew/Cellar/qt@5/5.15.2/lib/QtWidgets.framework"/>
+					<Add directory="/opt/homebrew/Cellar/qt@5/5.15.2/lib/QtWidgets.framework/Headers"/>
+					<Add directory="/opt/homebrew/Cellar/qt@5/5.15.2/lib/QtGui.framework"/>
+					<Add directory="/opt/homebrew/Cellar/qt@5/5.15.2/lib/QtGui.framework/Headers"/>
+					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/System/Library/Frameworks/OpenGL.framework/Headers"/>
+					<Add directory="/opt/homebrew/Cellar/qt@5/5.15.2/lib/QtCore.framework"/>
+					<Add directory="/opt/homebrew/Cellar/qt@5/5.15.2/lib/QtCore.framework/Headers"/>
+					<Add directory="/opt/homebrew/Cellar/qt@5/5.15.2/./mkspecs/macx-clang-arm64"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/12.0.5/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
@@ -65,19 +161,33 @@
 				</MakeCommands>
 			</Target>
 			<Target title="Place_recognization/fast">
-				<Option output="/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/cmake-build-debug/Place_recognization" prefix_auto="0" extension_auto="0"/>
+				<Option output="/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/cmake-build-debug/libPlace_recognization.dylib" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/cmake-build-debug"/>
 				<Option object_output="./"/>
-				<Option type="1"/>
+				<Option type="3"/>
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add option="-DDISABLE_PCAP"/>
 					<Add option="-DDISABLE_PNG"/>
+					<Add option="-DQT_WIDGETS_LIB"/>
+					<Add option="-DQT_GUI_LIB"/>
+					<Add option="-DQT_CORE_LIB"/>
+					<Add directory="/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization"/>
+					<Add directory="/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/include"/>
 					<Add directory="/opt/homebrew/include/pcl-1.12"/>
 					<Add directory="/opt/homebrew/include/eigen3"/>
 					<Add directory="/opt/homebrew/include"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/usr/local/include/opencv"/>
+					<Add directory="/opt/homebrew/include/vtk-9.0"/>
+					<Add directory="/opt/homebrew/Cellar/qt@5/5.15.2/lib/QtWidgets.framework"/>
+					<Add directory="/opt/homebrew/Cellar/qt@5/5.15.2/lib/QtWidgets.framework/Headers"/>
+					<Add directory="/opt/homebrew/Cellar/qt@5/5.15.2/lib/QtGui.framework"/>
+					<Add directory="/opt/homebrew/Cellar/qt@5/5.15.2/lib/QtGui.framework/Headers"/>
+					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/System/Library/Frameworks/OpenGL.framework/Headers"/>
+					<Add directory="/opt/homebrew/Cellar/qt@5/5.15.2/lib/QtCore.framework"/>
+					<Add directory="/opt/homebrew/Cellar/qt@5/5.15.2/lib/QtCore.framework/Headers"/>
+					<Add directory="/opt/homebrew/Cellar/qt@5/5.15.2/./mkspecs/macx-clang-arm64"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/12.0.5/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
@@ -92,25 +202,16 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/extract_segments.cpp">
-			<Option target="Place_recognization"/>
-		</Unit>
-		<Unit filename="/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/extract_segments.h">
-			<Option target="Place_recognization"/>
-		</Unit>
 		<Unit filename="/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/main.cpp">
+			<Option target="prtest"/>
+		</Unit>
+		<Unit filename="/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/src/extract_segments.cpp">
 			<Option target="Place_recognization"/>
 		</Unit>
-		<Unit filename="/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/projection.cpp">
+		<Unit filename="/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/src/projection.cpp">
 			<Option target="Place_recognization"/>
 		</Unit>
-		<Unit filename="/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/projection.h">
-			<Option target="Place_recognization"/>
-		</Unit>
-		<Unit filename="/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/spatial_calculation.cpp">
-			<Option target="Place_recognization"/>
-		</Unit>
-		<Unit filename="/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/spatial_calculation.h">
+		<Unit filename="/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/src/spatial_calculation.cpp">
 			<Option target="Place_recognization"/>
 		</Unit>
 		<Unit filename="/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/CMakeLists.txt">

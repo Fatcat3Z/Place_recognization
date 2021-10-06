@@ -174,5 +174,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
+  "CMakeFiles/prtest.dir/DependInfo.cmake"
   "CMakeFiles/Place_recognization.dir/DependInfo.cmake"
   )

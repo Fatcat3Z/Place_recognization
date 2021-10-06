@@ -77,125 +77,161 @@ include CMakeFiles/Place_recognization.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/Place_recognization.dir/flags.make
 
-CMakeFiles/Place_recognization.dir/main.cpp.o: CMakeFiles/Place_recognization.dir/flags.make
-CMakeFiles/Place_recognization.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Place_recognization.dir/main.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Place_recognization.dir/main.cpp.o -c /Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/main.cpp
+CMakeFiles/Place_recognization.dir/src/extract_segments.cpp.o: CMakeFiles/Place_recognization.dir/flags.make
+CMakeFiles/Place_recognization.dir/src/extract_segments.cpp.o: ../src/extract_segments.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Place_recognization.dir/src/extract_segments.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Place_recognization.dir/src/extract_segments.cpp.o -c /Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/src/extract_segments.cpp
 
-CMakeFiles/Place_recognization.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Place_recognization.dir/main.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/main.cpp > CMakeFiles/Place_recognization.dir/main.cpp.i
+CMakeFiles/Place_recognization.dir/src/extract_segments.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Place_recognization.dir/src/extract_segments.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/src/extract_segments.cpp > CMakeFiles/Place_recognization.dir/src/extract_segments.cpp.i
 
-CMakeFiles/Place_recognization.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Place_recognization.dir/main.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/main.cpp -o CMakeFiles/Place_recognization.dir/main.cpp.s
+CMakeFiles/Place_recognization.dir/src/extract_segments.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Place_recognization.dir/src/extract_segments.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/src/extract_segments.cpp -o CMakeFiles/Place_recognization.dir/src/extract_segments.cpp.s
 
-CMakeFiles/Place_recognization.dir/projection.cpp.o: CMakeFiles/Place_recognization.dir/flags.make
-CMakeFiles/Place_recognization.dir/projection.cpp.o: ../projection.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Place_recognization.dir/projection.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Place_recognization.dir/projection.cpp.o -c /Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/projection.cpp
+CMakeFiles/Place_recognization.dir/src/projection.cpp.o: CMakeFiles/Place_recognization.dir/flags.make
+CMakeFiles/Place_recognization.dir/src/projection.cpp.o: ../src/projection.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Place_recognization.dir/src/projection.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Place_recognization.dir/src/projection.cpp.o -c /Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/src/projection.cpp
 
-CMakeFiles/Place_recognization.dir/projection.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Place_recognization.dir/projection.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/projection.cpp > CMakeFiles/Place_recognization.dir/projection.cpp.i
+CMakeFiles/Place_recognization.dir/src/projection.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Place_recognization.dir/src/projection.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/src/projection.cpp > CMakeFiles/Place_recognization.dir/src/projection.cpp.i
 
-CMakeFiles/Place_recognization.dir/projection.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Place_recognization.dir/projection.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/projection.cpp -o CMakeFiles/Place_recognization.dir/projection.cpp.s
+CMakeFiles/Place_recognization.dir/src/projection.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Place_recognization.dir/src/projection.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/src/projection.cpp -o CMakeFiles/Place_recognization.dir/src/projection.cpp.s
 
-CMakeFiles/Place_recognization.dir/spatial_calculation.cpp.o: CMakeFiles/Place_recognization.dir/flags.make
-CMakeFiles/Place_recognization.dir/spatial_calculation.cpp.o: ../spatial_calculation.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Place_recognization.dir/spatial_calculation.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Place_recognization.dir/spatial_calculation.cpp.o -c /Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/spatial_calculation.cpp
+CMakeFiles/Place_recognization.dir/src/spatial_calculation.cpp.o: CMakeFiles/Place_recognization.dir/flags.make
+CMakeFiles/Place_recognization.dir/src/spatial_calculation.cpp.o: ../src/spatial_calculation.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Place_recognization.dir/src/spatial_calculation.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Place_recognization.dir/src/spatial_calculation.cpp.o -c /Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/src/spatial_calculation.cpp
 
-CMakeFiles/Place_recognization.dir/spatial_calculation.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Place_recognization.dir/spatial_calculation.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/spatial_calculation.cpp > CMakeFiles/Place_recognization.dir/spatial_calculation.cpp.i
+CMakeFiles/Place_recognization.dir/src/spatial_calculation.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Place_recognization.dir/src/spatial_calculation.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/src/spatial_calculation.cpp > CMakeFiles/Place_recognization.dir/src/spatial_calculation.cpp.i
 
-CMakeFiles/Place_recognization.dir/spatial_calculation.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Place_recognization.dir/spatial_calculation.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/spatial_calculation.cpp -o CMakeFiles/Place_recognization.dir/spatial_calculation.cpp.s
-
-CMakeFiles/Place_recognization.dir/extract_segments.cpp.o: CMakeFiles/Place_recognization.dir/flags.make
-CMakeFiles/Place_recognization.dir/extract_segments.cpp.o: ../extract_segments.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Place_recognization.dir/extract_segments.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Place_recognization.dir/extract_segments.cpp.o -c /Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/extract_segments.cpp
-
-CMakeFiles/Place_recognization.dir/extract_segments.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Place_recognization.dir/extract_segments.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/extract_segments.cpp > CMakeFiles/Place_recognization.dir/extract_segments.cpp.i
-
-CMakeFiles/Place_recognization.dir/extract_segments.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Place_recognization.dir/extract_segments.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/extract_segments.cpp -o CMakeFiles/Place_recognization.dir/extract_segments.cpp.s
+CMakeFiles/Place_recognization.dir/src/spatial_calculation.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Place_recognization.dir/src/spatial_calculation.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/src/spatial_calculation.cpp -o CMakeFiles/Place_recognization.dir/src/spatial_calculation.cpp.s
 
 # Object files for target Place_recognization
 Place_recognization_OBJECTS = \
-"CMakeFiles/Place_recognization.dir/main.cpp.o" \
-"CMakeFiles/Place_recognization.dir/projection.cpp.o" \
-"CMakeFiles/Place_recognization.dir/spatial_calculation.cpp.o" \
-"CMakeFiles/Place_recognization.dir/extract_segments.cpp.o"
+"CMakeFiles/Place_recognization.dir/src/extract_segments.cpp.o" \
+"CMakeFiles/Place_recognization.dir/src/projection.cpp.o" \
+"CMakeFiles/Place_recognization.dir/src/spatial_calculation.cpp.o"
 
 # External object files for target Place_recognization
 Place_recognization_EXTERNAL_OBJECTS =
 
-Place_recognization: CMakeFiles/Place_recognization.dir/main.cpp.o
-Place_recognization: CMakeFiles/Place_recognization.dir/projection.cpp.o
-Place_recognization: CMakeFiles/Place_recognization.dir/spatial_calculation.cpp.o
-Place_recognization: CMakeFiles/Place_recognization.dir/extract_segments.cpp.o
-Place_recognization: CMakeFiles/Place_recognization.dir/build.make
-Place_recognization: /usr/local/lib/libopencv_stitching.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_superres.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_videostab.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_aruco.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_bgsegm.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_bioinspired.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_ccalib.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_dnn_objdetect.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_dpm.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_face.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_freetype.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_fuzzy.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_hfs.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_img_hash.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_line_descriptor.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_optflow.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_reg.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_rgbd.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_saliency.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_sfm.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_stereo.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_structured_light.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_surface_matching.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_tracking.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_xfeatures2d.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_ximgproc.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_xobjdetect.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_xphoto.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_highgui.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_videoio.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_shape.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_phase_unwrapping.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_video.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_datasets.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_plot.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_text.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_dnn.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_ml.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_imgcodecs.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_objdetect.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_calib3d.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_features2d.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_flann.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_photo.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_imgproc.3.4.13.dylib
-Place_recognization: /usr/local/lib/libopencv_core.3.4.13.dylib
-Place_recognization: CMakeFiles/Place_recognization.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable Place_recognization"
+libPlace_recognization.dylib: CMakeFiles/Place_recognization.dir/src/extract_segments.cpp.o
+libPlace_recognization.dylib: CMakeFiles/Place_recognization.dir/src/projection.cpp.o
+libPlace_recognization.dylib: CMakeFiles/Place_recognization.dir/src/spatial_calculation.cpp.o
+libPlace_recognization.dylib: CMakeFiles/Place_recognization.dir/build.make
+libPlace_recognization.dylib: /usr/local/lib/libopencv_stitching.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_superres.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_videostab.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_aruco.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_bgsegm.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_bioinspired.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_ccalib.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_dnn_objdetect.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_dpm.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_face.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_freetype.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_fuzzy.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_hfs.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_img_hash.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_line_descriptor.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_optflow.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_reg.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_rgbd.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_saliency.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_sfm.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_stereo.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_structured_light.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_surface_matching.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_tracking.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_xfeatures2d.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_ximgproc.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_xobjdetect.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_xphoto.3.4.13.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libpcl_io.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libboost_system-mt.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libboost_filesystem-mt.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libboost_date_time-mt.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libboost_iostreams-mt.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libboost_regex-mt.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libvtkChartsCore-9.0.9.0.3.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libvtkIOGeometry-9.0.9.0.3.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libvtkIOPLY-9.0.9.0.3.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libvtkRenderingLOD-9.0.9.0.3.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libvtkViewsContext2D-9.0.9.0.3.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libvtkRenderingQt-9.0.9.0.3.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libvtkGUISupportQt-9.0.9.0.3.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_highgui.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_videoio.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_shape.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_phase_unwrapping.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_video.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_datasets.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_plot.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_text.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_dnn.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_ml.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_imgcodecs.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_objdetect.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_calib3d.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_features2d.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_flann.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_photo.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_imgproc.3.4.13.dylib
+libPlace_recognization.dylib: /usr/local/lib/libopencv_core.3.4.13.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libpcl_octree.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libpcl_common.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libvtkRenderingContext2D-9.0.9.0.3.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libvtkViewsCore-9.0.9.0.3.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libvtkInteractionWidgets-9.0.9.0.3.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libvtkFiltersModeling-9.0.9.0.3.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libvtkInteractionStyle-9.0.9.0.3.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libvtkFiltersExtraction-9.0.9.0.3.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libvtkIOLegacy-9.0.9.0.3.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libvtkIOCore-9.0.9.0.3.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libvtkRenderingAnnotation-9.0.9.0.3.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libvtkImagingSources-9.0.9.0.3.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libvtkIOImage-9.0.9.0.3.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libvtkImagingCore-9.0.9.0.3.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libvtkRenderingOpenGL2-9.0.9.0.3.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libvtkRenderingUI-9.0.9.0.3.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libGLEW.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libvtkRenderingLabel-9.0.9.0.3.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libvtkRenderingFreeType-9.0.9.0.3.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libvtkRenderingCore-9.0.9.0.3.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libvtkCommonColor-9.0.9.0.3.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libvtkFiltersGeometry-9.0.9.0.3.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libvtkFiltersSources-9.0.9.0.3.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libvtkfreetype-9.0.9.0.3.dylib
+libPlace_recognization.dylib: /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/lib/libz.tbd
+libPlace_recognization.dylib: /opt/homebrew/Cellar/qt@5/5.15.2/lib/QtWidgets.framework/QtWidgets
+libPlace_recognization.dylib: /opt/homebrew/Cellar/qt@5/5.15.2/lib/QtGui.framework/QtGui
+libPlace_recognization.dylib: /opt/homebrew/Cellar/qt@5/5.15.2/lib/QtCore.framework/QtCore
+libPlace_recognization.dylib: /opt/homebrew/lib/libvtkFiltersGeneral-9.0.9.0.3.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libvtkCommonComputationalGeometry-9.0.9.0.3.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libvtkFiltersCore-9.0.9.0.3.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libvtkCommonExecutionModel-9.0.9.0.3.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libvtkCommonDataModel-9.0.9.0.3.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libvtkCommonMisc-9.0.9.0.3.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libvtkCommonTransforms-9.0.9.0.3.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libvtkCommonMath-9.0.9.0.3.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libvtkCommonCore-9.0.9.0.3.dylib
+libPlace_recognization.dylib: /opt/homebrew/lib/libvtksys-9.0.9.0.3.dylib
+libPlace_recognization.dylib: CMakeFiles/Place_recognization.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX shared library libPlace_recognization.dylib"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Place_recognization.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-CMakeFiles/Place_recognization.dir/build: Place_recognization
+CMakeFiles/Place_recognization.dir/build: libPlace_recognization.dylib
 
 .PHONY : CMakeFiles/Place_recognization.dir/build
 
