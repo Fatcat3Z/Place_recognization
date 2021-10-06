@@ -9,7 +9,7 @@ Call Stack (most recent call first):
   /opt/homebrew/share/pcl-1.12/PCLConfig.cmake:134 (find_package)
   /opt/homebrew/share/pcl-1.12/PCLConfig.cmake:303 (find_boost)
   /opt/homebrew/share/pcl-1.12/PCLConfig.cmake:539 (find_external_library)
-  CMakeLists.txt:8 (find_package)
+  CMakeLists.txt:11 (find_package)
 
 
 CMake Warning at /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.17/Modules/FindBoost.cmake:1183 (message):
@@ -21,7 +21,7 @@ Call Stack (most recent call first):
   /opt/homebrew/share/pcl-1.12/PCLConfig.cmake:134 (find_package)
   /opt/homebrew/share/pcl-1.12/PCLConfig.cmake:303 (find_boost)
   /opt/homebrew/share/pcl-1.12/PCLConfig.cmake:539 (find_external_library)
-  CMakeLists.txt:8 (find_package)
+  CMakeLists.txt:11 (find_package)
 
 
 CMake Warning at /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.17/Modules/FindBoost.cmake:1183 (message):
@@ -33,7 +33,7 @@ Call Stack (most recent call first):
   /opt/homebrew/share/pcl-1.12/PCLConfig.cmake:134 (find_package)
   /opt/homebrew/share/pcl-1.12/PCLConfig.cmake:303 (find_boost)
   /opt/homebrew/share/pcl-1.12/PCLConfig.cmake:539 (find_external_library)
-  CMakeLists.txt:8 (find_package)
+  CMakeLists.txt:11 (find_package)
 
 
 CMake Warning at /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.17/Modules/FindBoost.cmake:1183 (message):
@@ -45,7 +45,7 @@ Call Stack (most recent call first):
   /opt/homebrew/share/pcl-1.12/PCLConfig.cmake:134 (find_package)
   /opt/homebrew/share/pcl-1.12/PCLConfig.cmake:303 (find_boost)
   /opt/homebrew/share/pcl-1.12/PCLConfig.cmake:539 (find_external_library)
-  CMakeLists.txt:8 (find_package)
+  CMakeLists.txt:11 (find_package)
 
 
 CMake Warning at /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.17/Modules/FindBoost.cmake:1183 (message):
@@ -57,38 +57,82 @@ Call Stack (most recent call first):
   /opt/homebrew/share/pcl-1.12/PCLConfig.cmake:134 (find_package)
   /opt/homebrew/share/pcl-1.12/PCLConfig.cmake:303 (find_boost)
   /opt/homebrew/share/pcl-1.12/PCLConfig.cmake:539 (find_external_library)
-  CMakeLists.txt:8 (find_package)
+  CMakeLists.txt:11 (find_package)
 
 
 -- Found Boost: /opt/homebrew/include (found suitable version "1.76.0", minimum required is "1.65.0") found components: system filesystem date_time iostreams regex 
-** WARNING ** io features related to pcap will be disabled
-** WARNING ** io features related to png will be disabled
+-- Found GLEW: /opt/homebrew/lib/libGLEW.dylib  
+-- Found OpenGL: /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/System/Library/Frameworks/OpenGL.framework  found components: OpenGL 
 CMake Deprecation Warning at /opt/homebrew/lib/cmake/vtk-9.0/vtk-use-file-deprecated.cmake:1 (message):
   The `VTK_USE_FILE` is no longer used starting with 8.90.
 Call Stack (most recent call first):
   /opt/homebrew/share/pcl-1.12/PCLConfig.cmake:340 (include)
   /opt/homebrew/share/pcl-1.12/PCLConfig.cmake:536 (find_external_library)
-  CMakeLists.txt:8 (find_package)
-
-
--- looking for PCL_COMMON
--- looking for PCL_OCTREE
--- looking for PCL_IO
--- Found Boost: /opt/homebrew/include (found version "1.76.0")  
--- HDF5: Using hdf5 compiler wrapper to determine C configuration
--- Found Boost: /opt/homebrew/include (found suitable exact version "1.76.0")  
-CMake Warning at /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.17/Modules/FindBoost.cmake:1183 (message):
-  New Boost version may have incorrect or missing dependencies and imported
-  targets
-Call Stack (most recent call first):
-  /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.17/Modules/FindBoost.cmake:1307 (_Boost_COMPONENT_DEPENDENCIES)
-  /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.17/Modules/FindBoost.cmake:1908 (_Boost_MISSING_DEPENDENCIES)
-  /opt/homebrew/lib/cmake/vtk-9.0/vtk-vtk-module-find-packages.cmake:1008 (find_package)
-  /opt/homebrew/lib/cmake/vtk-9.0/vtk-config.cmake:131 (include)
   CMakeLists.txt:11 (find_package)
 
 
--- Found Boost: /opt/homebrew/include (found suitable exact version "1.76.0") found components: serialization 
+** WARNING ** io features related to pcap will be disabled
+CMake Deprecation Warning at /opt/homebrew/lib/cmake/vtk-9.0/vtk-use-file-deprecated.cmake:1 (message):
+  The `VTK_USE_FILE` is no longer used starting with 8.90.
+Call Stack (most recent call first):
+  /opt/homebrew/share/pcl-1.12/PCLConfig.cmake:340 (include)
+  /opt/homebrew/share/pcl-1.12/PCLConfig.cmake:536 (find_external_library)
+  CMakeLists.txt:11 (find_package)
+
+
+CMake Deprecation Warning at /opt/homebrew/lib/cmake/vtk-9.0/vtk-use-file-deprecated.cmake:1 (message):
+  The `VTK_USE_FILE` is no longer used starting with 8.90.
+Call Stack (most recent call first):
+  /opt/homebrew/share/pcl-1.12/PCLConfig.cmake:340 (include)
+  /opt/homebrew/share/pcl-1.12/PCLConfig.cmake:539 (find_external_library)
+  CMakeLists.txt:11 (find_package)
+
+
+-- QHULL found (include: /opt/homebrew/include, lib: optimized;/opt/homebrew/lib/libqhull_r.dylib;debug;/opt/homebrew/lib/libqhull_r.dylib)
+CMake Deprecation Warning at /opt/homebrew/lib/cmake/vtk-9.0/vtk-use-file-deprecated.cmake:1 (message):
+  The `VTK_USE_FILE` is no longer used starting with 8.90.
+Call Stack (most recent call first):
+  /opt/homebrew/share/pcl-1.12/PCLConfig.cmake:340 (include)
+  /opt/homebrew/share/pcl-1.12/PCLConfig.cmake:536 (find_external_library)
+  CMakeLists.txt:11 (find_package)
+
+
+CMake Deprecation Warning at /opt/homebrew/lib/cmake/vtk-9.0/vtk-use-file-deprecated.cmake:1 (message):
+  The `VTK_USE_FILE` is no longer used starting with 8.90.
+Call Stack (most recent call first):
+  /opt/homebrew/share/pcl-1.12/PCLConfig.cmake:340 (include)
+  /opt/homebrew/share/pcl-1.12/PCLConfig.cmake:536 (find_external_library)
+  CMakeLists.txt:11 (find_package)
+
+
+-- Found OpenGL: /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/System/Library/Frameworks/OpenGL.framework   
+-- Found GLEW: /opt/homebrew/include  
+-- looking for PCL_COMMON
+-- looking for PCL_KDTREE
+-- looking for PCL_OCTREE
+-- looking for PCL_SEARCH
+-- looking for PCL_SAMPLE_CONSENSUS
+-- looking for PCL_FILTERS
+-- looking for PCL_2D
+-- looking for PCL_GEOMETRY
+-- looking for PCL_IO
+-- looking for PCL_FEATURES
+-- looking for PCL_ML
+-- looking for PCL_SEGMENTATION
+-- looking for PCL_VISUALIZATION
+-- looking for PCL_SURFACE
+-- looking for PCL_REGISTRATION
+-- looking for PCL_KEYPOINTS
+-- looking for PCL_TRACKING
+-- looking for PCL_RECOGNITION
+-- looking for PCL_STEREO
+-- looking for PCL_APPS
+-- looking for PCL_CLOUD_COMPOSER
+-- looking for PCL_POINT_CLOUD_EDITOR
+-- looking for PCL_OUTOFCORE
+-- looking for PCL_PEOPLE
+-- looking for PCL_SIMULATION
+-- Found Boost: /opt/homebrew/include (found version "1.76.0")  
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/cmake-build-debug

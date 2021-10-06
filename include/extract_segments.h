@@ -19,7 +19,7 @@
 #include <pcl/ModelCoefficients.h>
 #include <pcl/visualization/cloud_viewer.h>
 #include <pcl/visualization/pcl_visualizer.h>
-#include <opencv2/opencv.hpp>
+//#include <opencv2/opencv.hpp>
 
 class extractsegments{
 public:

@@ -11,10 +11,10 @@ set(CMAKE_CXX_COMPILER_ID "AppleClang")
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_CXX
   "DISABLE_PCAP"
-  "DISABLE_PNG"
   "QT_CORE_LIB"
   "QT_GUI_LIB"
   "QT_WIDGETS_LIB"
+  "qh_QHpointer"
   )
 
 # The include file search paths:
@@ -24,8 +24,6 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/opt/homebrew/include/pcl-1.12"
   "/opt/homebrew/include/eigen3"
   "/opt/homebrew/include"
-  "/usr/local/include"
-  "/usr/local/include/opencv"
   "/opt/homebrew/include/vtk-9.0"
   "/opt/homebrew/Cellar/qt@5/5.15.2/lib/QtWidgets.framework"
   "/opt/homebrew/Cellar/qt@5/5.15.2/lib/QtWidgets.framework/Headers"

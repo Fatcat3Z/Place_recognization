@@ -7,8 +7,9 @@
 #include <iostream>
 #include <pcl/io/pcd_io.h>
 #include <pcl/point_types.h>
-#include <opencv2/opencv.hpp>
+//#include <opencv2/opencv.hpp>
 #include <vector>
+#include <cmath>
 
 class RangeProjection{
 
@@ -16,9 +17,9 @@ public:
     RangeProjection(int fov_up=15, int fov_down=-16, int proj_H=64, int proj_W=1000, int max_range=50)
     :_fov_up(fov_up), _fov_down(fov_down), _proj_H(proj_H), _proj_W(proj_W), _max_range(max_range){};
 
-    void sortdepth(std::vector<cv::Point3d> &points);
+    void sortdepth(std::vector<pcl::PointXYZ> &points);
 
-    static bool comparedepth(const std::pair<cv::Point3d, double>& pointndepthA, const std::pair<cv::Point3d, double>& pointndepthB);
+    static bool comparedepth(const std::pair<pcl::PointXYZ, double>& pointndepthA, const std::pair<pcl::PointXYZ, double>& pointndepthB);
 private:
     int _segments_num;  // 输入的段落数量
     int _fov_up;        // 正向角度视野   C32为15
