@@ -1,5 +1,6 @@
 #include <iostream>
 #include "extract_segments.h"
+#include "projection.h"
 
 using namespace std;
 
@@ -11,5 +12,8 @@ int main() {
 
     extractsegments extractor;
     extractor.filtercloud(cloud, cloud_flitered);
+    vector<pcl::PointCloud<pcl::PointXYZ>::Ptr> Eucluextra = extractor.extract_segments(cloud_flitered);
+    RangeProjection projection(false, true);
+    projection.frontproject(Eucluextra);
     return 0;
 }

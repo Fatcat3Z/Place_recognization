@@ -7,19 +7,28 @@
 #include <iostream>
 #include <pcl/io/pcd_io.h>
 #include <pcl/point_types.h>
-//#include <opencv2/opencv.hpp>
+#include <opencv2/opencv.hpp>
 #include <vector>
 #include <cmath>
+#include <utility>
+#include "extract_segments.h"
 
 class RangeProjection{
 
 public:
-    RangeProjection(int fov_up=15, int fov_down=-16, int proj_H=64, int proj_W=1000, int max_range=50)
-    :_fov_up(fov_up), _fov_down(fov_down), _proj_H(proj_H), _proj_W(proj_W), _max_range(max_range){};
+    RangeProjection(bool showclouds = false, bool showprojections = true, int fov_up=3, int fov_down=-25, int proj_H=64, int proj_W=900, int max_range=40)
+    :_showclouds(showclouds),
+    _showprojectios(showprojections),
+    _fov_up(fov_up),
+    _fov_down(fov_down),
+    _proj_H(proj_H),
+    _proj_W(proj_W),
+    _max_range(max_range),
+    _topk(5){};
 
-    void sortdepth(std::vector<pcl::PointXYZ> &points);
-
-    static bool comparedepth(const std::pair<pcl::PointXYZ, double>& pointndepthA, const std::pair<pcl::PointXYZ, double>& pointndepthB);
+    void frontproject(std::vector<pcl::PointCloud<pcl::PointXYZ>::Ptr>& Eucluextra);
+    extractsegments extractor;
+    static bool comparedepth(const std::pair<pcl::PointCloud<pcl::PointXYZ>::Ptr, double>& cloudA, const std::pair<pcl::PointCloud<pcl::PointXYZ>::Ptr, double>& cloudB);
 private:
     int _segments_num;  // 输入的段落数量
     int _fov_up;        // 正向角度视野   C32为15
@@ -27,5 +36,8 @@ private:
     int _proj_H;        // 投影伪图像的行数，对应于垂直分辨率
     int _proj_W;        // 投影伪图像的列数，对应于水平分辨率
     int _max_range;     // 深度的最大有效距离
+    int _topk;
+    bool _showclouds;
+    bool _showprojectios;
 };
 #endif //PLACE_RECOGNIZATION_PROJECTION_H

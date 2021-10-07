@@ -459,7 +459,7 @@ OPENGL_gl_LIBRARY:FILEPATH=/Library/Developer/CommandLineTools/SDKs/MacOSX11.3.s
 OPENGL_glu_LIBRARY:FILEPATH=/Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/System/Library/Frameworks/OpenGL.framework
 
 //The directory containing a CMake configuration file for OpenCV.
-OpenCV_DIR:PATH=/usr/local/share/OpenCV
+OpenCV_DIR:PATH=/opt/homebrew/lib/cmake/opencv4
 
 //path to 2d headers
 PCL_2D_INCLUDE_DIR:PATH=/opt/homebrew/include/pcl-1.12
@@ -1017,7 +1017,7 @@ FIND_PACKAGE_MESSAGE_DETAILS_LibXml2:INTERNAL=[/Library/Developer/CommandLineToo
 //Details about finding OGG
 FIND_PACKAGE_MESSAGE_DETAILS_OGG:INTERNAL=[/opt/homebrew/lib/libogg.dylib][/opt/homebrew/include][v()]
 //Details about finding OpenCV
-FIND_PACKAGE_MESSAGE_DETAILS_OpenCV:INTERNAL=[/usr/local][v3.4.13(3)]
+FIND_PACKAGE_MESSAGE_DETAILS_OpenCV:INTERNAL=[/opt/homebrew/Cellar/opencv/4.5.3_2][v4.5.3(4)]
 //Details about finding OpenGL
 FIND_PACKAGE_MESSAGE_DETAILS_OpenGL:INTERNAL=[/Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/System/Library/Frameworks/OpenGL.framework][/Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/System/Library/Frameworks/OpenGL.framework][c ][v()]
 //Details about finding PCL

@@ -18,17 +18,6 @@ std::vector<pcl::PointIndices> extractsegments::extract_cluster_indices(const pc
     ec.setInputCloud(cloud_filtered);
     ec.extract(cluster_indices);
 
-    vector<pcl::PointCloud<pcl::PointXYZ>::Ptr> Eucluextra; // 用于储存欧式分割后的点云
-    for(auto iter = cluster_indices.begin(); iter != cluster_indices.end(); iter++){
-        pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_cluster(new pcl::PointCloud<pcl::PointXYZ>);
-        for(auto pit = iter->indices.begin(); pit != iter->indices.end(); pit++)
-            cloud_cluster->points.push_back(cloud_filtered->points[*pit]);
-        cloud_cluster->width = cloud_cluster->points.size();
-        cloud_cluster->height = 1;
-        cloud_cluster->is_dense = true;
-        Eucluextra.push_back(cloud_cluster);
-
-    }
     return cluster_indices;
 }
 
@@ -36,12 +25,13 @@ void extractsegments::filtercloud(pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud, pc
     if (!cloud->empty()){
         // 先体素化再作平面分割
         pcl::VoxelGrid<pcl::PointXYZ> vg; //体素栅格下采样对象
-        pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_vg (new pcl::PointCloud<pcl::PointXYZ>);
+        pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_vg(new pcl::PointCloud<pcl::PointXYZ>);
         vg.setInputCloud (cloud);
         vg.setLeafSize (0.01f, 0.01f, 0.01f); //设置采样的体素大小
         vg.filter (*cloud_vg);  //执行采样保存数据
 
         //创建分割时所需要的模型系数对象，coefficients及存储内点的点索引集合对象inliers
+        pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_remove(new pcl::PointCloud<pcl::PointXYZ>);
         pcl::ModelCoefficients::Ptr coefficients(new pcl::ModelCoefficients);
             pcl::PointIndices::Ptr inliers(new pcl::PointIndices);
         // 创建分割对象
@@ -66,16 +56,103 @@ void extractsegments::filtercloud(pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud, pc
         extractor.setInputCloud(cloud);
         extractor.setIndices(inliers);
         extractor.setNegative(true);        // true 表示滤除地面 false表示提取地面
-        extractor.filter(*cloud_filtered);
-        // vise-versa, remove the ground not just extract the ground
-        // just setNegative to be true
+        extractor.filter(*cloud_remove);
+
+        // 对传感器高度范围内的点云再进行一次筛选
+
+        pcl::PassThrough<pcl::PointXYZ> pass;
+        pass.setInputCloud(cloud_remove);
+        pass.setFilterFieldName("z");
+        pass.setFilterLimits (-_sensor_height, 2);
+        pass.filter(*cloud_filtered);
+
         cout << "filter done."<<endl;
-       boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer(new pcl::visualization::PCLVisualizer(" cloud viewer"));
-       viewer->setBackgroundColor(0, 0, 0);
-       viewer->addPointCloud(cloud_filtered, "fliter cloud");
-       viewer->addCoordinateSystem(1.0);
-       viewer->spin();
+        // 显示点云
+        if(_show){
+            boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer(new pcl::visualization::PCLVisualizer(" cloud viewer"));
+            viewer->setBackgroundColor(0, 0, 0);
+            viewer->addPointCloud(cloud_filtered, "fliter cloud");
+            viewer->addCoordinateSystem(1.0);
+            viewer->spin();
+        }
+
     }else{
         cout<<"no raw PointCloud data!"<<endl;
     }
+
 }
+pcl::PointXYZ extractsegments::calculate_centroid(pcl::PointCloud<pcl::PointXYZ>::Ptr& cloud) {
+    Eigen::Vector4f centroid;
+    pcl::compute3DCentroid(*cloud, centroid);
+    return {centroid(0), centroid(1), centroid(2)};
+}
+
+double extractsegments::calculate_area_of_triangle(double dista, double distb, double distc) {
+    double p = 0.5 * (dista + distb + distc);
+    double res = 0;
+    double halensum = p * (p - dista) * (p - distb) * (p - distc);
+    if(halensum > 0)    res = sqrt(halensum);
+    return res;
+}
+
+std::vector<double> extractsegments::calculate_spatial_area(const std::vector<pcl::PointXYZ>& centroids, int topk){
+    vector<double> areas(centroids.size());
+    double dist_mat[centroids.size()][topk];    // 距离缓存表
+    double area_mat[centroids.size()][topk-2];  // 面积缓存表
+    double area_factor[centroids.size()][topk-2];
+    for(int i = 0; i< centroids.size(); i++){
+        priority_queue<double, vector<double>, less<> > maxheap;        // 创建大顶堆(大值在堆顶)，找到ktop个最近邻
+        for(int j = 0; j< centroids.size(); j++){
+            double dist = pcl::euclideanDistance(centroids[i], centroids[j]);
+            if(maxheap.size() < topk)   maxheap.push(dist);             // 选topk个最近邻
+            else{
+                if(dist < maxheap.top()){
+                    maxheap.pop();
+                    maxheap.push(dist);
+                }
+            }
+        }
+        // 储存每个质心的k各最近邻的距离值，如果超过最远有效距离，设为0值
+        for(int k = 0; k < topk; k++){
+            if(maxheap.top() < _max_spatial_distance)   dist_mat[i][k] = maxheap.top();
+            else    dist_mat[i][k] = 0;
+            maxheap.pop();
+        }
+        // 计算空间三角形面积以及每个三角形的权重因子
+        double disA = dist_mat[i][topk-1], disB = dist_mat[i][topk-2];
+        double mindist = dist_mat[i][topk-3];
+        double factor_sum = 0;
+        for(int m = 0; m < topk-2; m++){
+            area_mat[i][m] = calculate_area_of_triangle(disA, disB, dist_mat[i][m]);
+            area_factor[i][m] = exp((dist_mat[i][m] / mindist) * area_mat[i][m]);
+            factor_sum += area_factor[i][m];
+        }
+        double spatial_area = 0;
+        for(int n = 0; n < topk-2; n++){
+            spatial_area += (area_factor[i][n] / factor_sum) * area_mat[i][n];
+        }
+        areas.push_back(spatial_area);
+    }
+    double normal_area = accumulate(areas.begin(), areas.end(),0.0);
+    for(double &area : areas)   area /= normal_area * 255;
+    return areas;
+}
+std::vector<pcl::PointCloud<pcl::PointXYZ>::Ptr> extractsegments::extract_segments(const pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud_filtered) {
+    std::vector<pcl::PointIndices> cluster_indices = extract_cluster_indices(cloud_filtered);
+
+    vector<pcl::PointCloud<pcl::PointXYZ>::Ptr> Eucluextra; // 用于储存欧式分割后的点云
+    for(auto & cluster_indice : cluster_indices){
+        pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_cluster(new pcl::PointCloud<pcl::PointXYZ>);
+        for(int & indice : cluster_indice.indices)
+            cloud_cluster->points.push_back(cloud_filtered->points[indice]);
+        cloud_cluster->width = cloud_cluster->points.size();
+        cloud_cluster->height = 1;
+        cloud_cluster->is_dense = true;
+        Eucluextra.push_back(cloud_cluster);
+    }
+    return Eucluextra;
+}
+
+
+
+

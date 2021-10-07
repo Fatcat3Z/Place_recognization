@@ -6,8 +6,7 @@ set(CMAKE_CXX_STANDARD 14)
 if(NOT DEFINED CMAKE_SUPPRESS_DEVELOPER_WARNINGS)
     set(CMAKE_SUPPRESS_DEVELOPER_WARNINGS 1 CACHE INTERNAL "No dev warnings")
 endif()
-
-#find_package(OpenCV 3 REQUIRED)
+find_package(OpenCV 4 REQUIRED)
 find_package(PCL REQUIRED)
 find_package(Boost REQUIRED)
 find_package(Eigen3 REQUIRED)
@@ -26,7 +25,7 @@ add_library(${PROJECT_NAME} SHARED
         src/projection.cpp
         src/spatial_calculation.cpp)
 target_link_libraries(${PROJECT_NAME}
-#        ${OpenCV_LIBS}
+        ${OpenCV_LIBS}
         ${EIGEN3_LIBS}
         ${PCL_LIBRARIES}
         ${VTK_LIBRARIES}

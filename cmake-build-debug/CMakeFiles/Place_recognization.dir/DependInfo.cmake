@@ -27,6 +27,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/opt/homebrew/include/pcl-1.12"
   "/opt/homebrew/include/eigen3"
   "/opt/homebrew/include"
+  "/opt/homebrew/Cellar/opencv/4.5.3_2/include/opencv4"
   "/opt/homebrew/include/vtk-9.0"
   "/opt/homebrew/Cellar/qt@5/5.15.2/lib/QtWidgets.framework"
   "/opt/homebrew/Cellar/qt@5/5.15.2/lib/QtWidgets.framework/Headers"
