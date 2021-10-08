@@ -41,8 +41,10 @@ public:
     std::vector<pcl::PointIndices> extract_cluster_indices(const pcl::PointCloud<pcl::PointXYZ>::Ptr& cloud_filtered);
     void filtercloud(pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud, pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud_filtered);
     static pcl::PointXYZ calculate_centroid(pcl::PointCloud<pcl::PointXYZ>::Ptr& cloud);
-    double calculate_area_of_triangle(double dista, double distb, double distc);
-    std::vector<double> calculate_spatial_area(const std::vector<pcl::PointXYZ>& centroids, int topk);
+    static double calculate_area_of_triangle(const pcl::PointXYZ& pointa, const pcl::PointXYZ& pointb, const pcl::PointXYZ& pointc);
+    std::vector<double> calculate_spatial_area(const std::vector<std::pair<pcl::PointXYZ, double>>& centroids, int topk);
+    static bool comparedepth(const std::pair<pcl::PointXYZ, double>& pointdepthA, const std::pair<pcl::PointXYZ, double>& pointdepthB);
+
     std::vector<pcl::PointCloud<pcl::PointXYZ>::Ptr> extract_segments(const pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud_filtered);
 
 private:

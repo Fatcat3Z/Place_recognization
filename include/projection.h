@@ -16,7 +16,7 @@
 class RangeProjection{
 
 public:
-    RangeProjection(bool showclouds = false, bool showprojections = true, int fov_up=3, int fov_down=-25, int proj_H=64, int proj_W=900, int max_range=40)
+    RangeProjection(bool showclouds = false, bool showprojections = true, int fov_up=3, int fov_down=-25, int proj_H=64, int proj_W=900, int max_range=30)
     :_showclouds(showclouds),
     _showprojectios(showprojections),
     _fov_up(fov_up),
@@ -29,6 +29,8 @@ public:
     void frontproject(std::vector<pcl::PointCloud<pcl::PointXYZ>::Ptr>& Eucluextra);
     extractsegments extractor;
     static bool comparedepth(const std::pair<pcl::PointCloud<pcl::PointXYZ>::Ptr, double>& cloudA, const std::pair<pcl::PointCloud<pcl::PointXYZ>::Ptr, double>& cloudB);
+    static bool comparedep(const std::pair<pcl::PointXYZ, double>& centroidA, const std::pair<pcl::PointXYZ, double>& centroidB);
+
 private:
     int _segments_num;  // 输入的段落数量
     int _fov_up;        // 正向角度视野   C32为15

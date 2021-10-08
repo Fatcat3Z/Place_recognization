@@ -13,7 +13,13 @@ int main() {
     extractsegments extractor;
     extractor.filtercloud(cloud, cloud_flitered);
     vector<pcl::PointCloud<pcl::PointXYZ>::Ptr> Eucluextra = extractor.extract_segments(cloud_flitered);
+    pcl::PointXYZ pointa = {0, 0, 0};
+    pcl::PointXYZ pointb = {1, 0, 0};
+    pcl::PointXYZ pointc = {0, 0, 1};
+//    vector<pcl::PointXYZ> cluster = {pointa, pointb, pointc};
+//    vector<double> area = extractor.calculate_spatial_area(cluster, 3);
     RangeProjection projection(false, true);
     projection.frontproject(Eucluextra);
+
     return 0;
 }
