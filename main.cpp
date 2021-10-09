@@ -18,7 +18,7 @@ int main() {
     pcl::PointXYZ pointc = {0, 0, 1};
 //    vector<pcl::PointXYZ> cluster = {pointa, pointb, pointc};
 //    vector<double> area = extractor.calculate_spatial_area(cluster, 3);
-    RangeProjection projection(false, true);
+    RangeProjection projection(false, false);
     projection.frontproject(Eucluextra);
 
     return 0;

@@ -14,6 +14,12 @@
 #include <map>
 #include "extract_segments.h"
 
+struct map_compare{
+    bool operator ()(const pcl::PointXYZ &pointA, const pcl::PointXYZ &pointB) const{
+        return pointA.x > pointB.x;
+    };
+
+};
 class RangeProjection{
 
 public:
@@ -36,6 +42,8 @@ public:
                                    const std::pair<pcl::PointXYZ, double>& cloudB);
     static bool comparevecdep(const std::vector<double>& cloudA,
                               const std::vector<double>& cloudB);
+
+
 private:
     double _fov_up;        // 正向角度视野   C32为15
     double _fov_down;      // 负向角度视野   C32为-16

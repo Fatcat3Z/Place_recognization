@@ -28,10 +28,10 @@ void RangeProjection::frontproject(vector<pcl::PointCloud<pcl::PointXYZ>::Ptr>& 
     int i = 0;
     vector<pair<pcl::PointCloud<pcl::PointXYZ>::Ptr, double>> cloudndepth;
     vector<pair<pcl::PointXYZ, double>> centroidsndepth;
-    map<PointXYZ, vector<double>> pointnorder;
+    map<PointXYZ, vector<double>, map_compare> pointnorder;
     vector<vector<double>> cloud_segments;
     int segments_num = Eucluextra.size();
-    cout<<"segments_num"<<segments_num;
+//    cout<<"segments_num"<<segments_num;
 
     // 这里的点云段还没有按照距离远近进行排序
     for(auto& cloud: Eucluextra){
@@ -42,7 +42,7 @@ void RangeProjection::frontproject(vector<pcl::PointCloud<pcl::PointXYZ>::Ptr>& 
         for(const auto& point: *cloud){
             double depth = pcl::euclideanDistance(PointXYZ(0,0,0), point);
             cloud_segments.push_back({point.x, point.y, point.z, depth});
-            pointnorder.insert(make_pair(point, 0));
+            pointnorder.insert(pair<pcl::PointXYZ, vector<double>>(point, {0, 0}));
         }
 
         string str_filename = "cloud_segmented" + to_string(i);
@@ -61,17 +61,17 @@ void RangeProjection::frontproject(vector<pcl::PointCloud<pcl::PointXYZ>::Ptr>& 
     double depth_order = 1.0;
     for(auto& cloud: cloudndepth){
         for(const auto& point: *(cloud.first)){
-            pointnorder[point][0] = depth_order;
-            pointnorder[point][1] = spatial_areas[depth_order-1];
+            pointnorder.find(point)->second[0] = depth_order;
+            pointnorder.find(point)->second[1] = spatial_areas[depth_order-1];
         }
         depth_order++;
     }
     // 已经按照距离由远到近进行段排序，使距离近的点云能够在投影时覆盖距离元的点云
-    cout<<"project points:"<<cloud_segments.size()<<endl;
+//    cout<<"project points:"<<cloud_segments.size()<<endl;
     for(const auto& point: cloud_segments){
         pcl::PointXYZ targetpoint(point[0], point[1], point[2]);
         double depth = point[3];
-        cout<<"depth:"<<depth<<endl;
+//        cout<<"depth:"<<depth<<endl;
         if(depth > _min_range && depth < _max_range){
             // 计算偏航角和俯仰角
             double yaw = - atan2(point[1], point[0]);
@@ -90,8 +90,8 @@ void RangeProjection::frontproject(vector<pcl::PointCloud<pcl::PointXYZ>::Ptr>& 
             proj_y = proj_y > 0 ? proj_y : 0;
 
             range_mat.at<float>(int(proj_y), int(proj_x)) = _min_range / depth;
-            depth_order_mat.at<float>((int)proj_y, (int)proj_x) = pointnorder[targetpoint][0] / segments_num;
-            spatial_area_mat.at<float>((int)proj_y, (int)proj_x) = pointnorder[targetpoint][1];
+            depth_order_mat.at<float>((int)proj_y, (int)proj_x) = pointnorder.find(targetpoint)->second[0] / segments_num;
+            spatial_area_mat.at<float>((int)proj_y, (int)proj_x) = pointnorder.find(targetpoint)->second[1];
         }
     }
     endTime = clock();
@@ -123,11 +123,13 @@ bool RangeProjection::compareclouddep(const pair<pcl::PointCloud<pcl::PointXYZ>:
     return cloudA.second > cloudB.second;
 }
 
-bool
-RangeProjection::comparecentroiddep(const pair<pcl::PointXYZ, double> &cloudA,
+bool RangeProjection::comparecentroiddep(const pair<pcl::PointXYZ, double> &cloudA,
                                     const pair<pcl::PointXYZ, double> &cloudB) {
     return cloudA.second > cloudB.second;
 }
+
+
+
 
 
 

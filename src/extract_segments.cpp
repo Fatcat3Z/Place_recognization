@@ -71,7 +71,7 @@ void extractsegments::filtercloud(pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud, pc
         pass.setFilterFieldName("z");
         pass.setFilterLimits (-_sensor_height, 3);
         pass.filter(*cloud_filtered);
-        cout << "filter done."<<endl;
+//        cout << "filter done."<<endl;
 
 //        pcl::VoxelGrid<pcl::PointXYZ> vg; //体素栅格下采样对象
 //        vg.setInputCloud (cloud_pass);
@@ -175,7 +175,7 @@ std::vector<pcl::PointCloud<pcl::PointXYZ>::Ptr> extractsegments::extract_segmen
             Eucluextra.push_back(cloud_cluster);
         }
     }
-    cout<<"segments size:"<<Eucluextra.size()<<endl;
+//    cout<<"segments size:"<<Eucluextra.size()<<endl;
     return Eucluextra;
 }
 
