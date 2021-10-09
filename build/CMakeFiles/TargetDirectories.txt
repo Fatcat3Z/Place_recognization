@@ -1,3 +1,0 @@
-/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/build/CMakeFiles/rebuild_cache.dir
-/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/build/CMakeFiles/edit_cache.dir
-/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/build/CMakeFiles/Place_recognization.dir

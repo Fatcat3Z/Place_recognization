@@ -32,19 +32,26 @@ public:
     _proj_W(proj_W),
     _max_range(max_range),
     _min_range(3.0),
-    _topk(5){};
+    _topk(5),
+    _scan_sector(900),
+    _scan_ring(64),
+    _scan_top(4),
+    _sensor_height(1.8){};
 
-    void frontproject(std::vector<pcl::PointCloud<pcl::PointXYZ>::Ptr>& Eucluextra);
+    void getprojection(std::vector<pcl::PointCloud<pcl::PointXYZ>::Ptr>& Eucluextra);
     extractsegments extractor;
+    cv::Mat frontprojection(const std::vector<std::vector<double>>& cloud_segments, std::map<pcl::PointXYZ, std::vector<double>, map_compare> pointnorder, int state);
     static bool compareclouddep(const std::pair<pcl::PointCloud<pcl::PointXYZ>::Ptr, double>& cloudA,
                                 const std::pair<pcl::PointCloud<pcl::PointXYZ>::Ptr, double>& cloudB);
     static bool comparecentroiddep(const std::pair<pcl::PointXYZ, double>& cloudA,
                                    const std::pair<pcl::PointXYZ, double>& cloudB);
     static bool comparevecdep(const std::vector<double>& cloudA,
                               const std::vector<double>& cloudB);
-
+    void set_segment_num(int segments){ _segments = segments;}
+    cv::Mat scancontext(const std::vector<std::vector<double>>& cloud_segments);
 
 private:
+    int _segments;
     double _fov_up;        // 正向角度视野   C32为15
     double _fov_down;      // 负向角度视野   C32为-16
     int _proj_H;        // 投影伪图像的行数，对应于垂直分辨率
@@ -54,5 +61,9 @@ private:
     int _topk;
     bool _showclouds;
     bool _showprojectios;
+    int _scan_sector;
+    int _scan_ring;
+    int _scan_top;
+    float _sensor_height;
 };
 #endif //PLACE_RECOGNIZATION_PROJECTION_H
