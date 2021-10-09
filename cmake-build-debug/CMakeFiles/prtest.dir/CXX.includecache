@@ -21,10 +21,6 @@ pcl/point_types.h
 -
 pcl/point_cloud.h
 -
-pcl/segmentation/extract_clusters.h
--
-pcl/segmentation/sac_segmentation.h
--
 pcl/filters/extract_indices.h
 -
 pcl/filters/voxel_grid.h
@@ -39,7 +35,15 @@ pcl/kdtree/kdtree.h
 -
 pcl/kdtree/impl/kdtree_flann.hpp
 -
+pcl/sample_consensus/method_types.h
+-
+pcl/sample_consensus/model_types.h
+-
 pcl/search/impl/kdtree.hpp
+-
+pcl/segmentation/extract_clusters.h
+-
+pcl/segmentation/sac_segmentation.h
 -
 pcl/ModelCoefficients.h
 -

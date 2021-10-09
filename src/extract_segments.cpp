@@ -23,27 +23,33 @@ std::vector<pcl::PointIndices> extractsegments::extract_cluster_indices(const pc
 
 void extractsegments::filtercloud(pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud, pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud_filtered) {
     if (!cloud->empty()){
-        // 先体素化再作平面分割
-        pcl::VoxelGrid<pcl::PointXYZ> vg; //体素栅格下采样对象
-        pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_vg(new pcl::PointCloud<pcl::PointXYZ>);
-        vg.setInputCloud (cloud);
-        vg.setLeafSize (0.01f, 0.01f, 0.01f); //设置采样的体素大小
-        vg.filter (*cloud_vg);  //执行采样保存数据
+        pcl::search::KdTree<pcl::PointXYZ>::Ptr tree(new pcl::search::KdTree<pcl::PointXYZ>());
 
         //创建分割时所需要的模型系数对象，coefficients及存储内点的点索引集合对象inliers
         pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_remove(new pcl::PointCloud<pcl::PointXYZ>);
         pcl::ModelCoefficients::Ptr coefficients(new pcl::ModelCoefficients);
-            pcl::PointIndices::Ptr inliers(new pcl::PointIndices);
+        pcl::PointIndices::Ptr inliers(new pcl::PointIndices);
         // 创建分割对象
-        pcl::SACSegmentation<pcl::PointXYZ> seg;
+        pcl::NormalEstimation<pcl::PointXYZ, pcl::Normal> ne;  //法线估计对象
+        pcl::SACSegmentationFromNormals<pcl::PointXYZ, pcl::Normal> seg;
+        pcl::PointCloud<pcl::Normal>::Ptr cloud_normals(new pcl::PointCloud<pcl::Normal>);
+
+        // 过滤后的点云进行法线估计，为后续进行基于法线的分割准备数据
+        ne.setSearchMethod(tree);
+        ne.setInputCloud(cloud);
+        ne.setKSearch(50);
+        ne.compute(*cloud_normals);
+
         // 可选择配置，设置模型系数需要优化
         seg.setOptimizeCoefficients(true);
         // 必要的配置，设置分割的模型类型，所用的随机参数估计方法，距离阀值，输入点云
-        seg.setModelType(pcl::SACMODEL_PLANE);      // 设置模型类型
+        seg.setModelType(pcl::SACMODEL_NORMAL_PLANE);      // 设置模型类型
         seg.setMethodType(pcl::SAC_RANSAC);                // 设置随机采样一致性方法类型
+        seg.setNormalDistanceWeight(_normal_dist_weight);            //设置表面法线权重系数
         seg.setMaxIterations(_fliter_max_iteration);
         seg.setDistanceThreshold(_distance_threshold);
-        seg.setInputCloud(cloud_vg);
+        seg.setInputCloud(cloud);
+        seg.setInputNormals(cloud_normals);
         //引发分割实现，存储分割结果到点几何inliers及存储平面模型的系数coefficients
         seg.segment(*inliers, *coefficients);
         if (inliers->indices.empty())
@@ -57,21 +63,25 @@ void extractsegments::filtercloud(pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud, pc
         extractor.setIndices(inliers);
         extractor.setNegative(true);        // true 表示滤除地面 false表示提取地面
         extractor.filter(*cloud_remove);
+//        pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_pass(new pcl::PointCloud<pcl::PointXYZ>);
 
         // 对传感器高度范围内的点云再进行一次筛选
-
         pcl::PassThrough<pcl::PointXYZ> pass;
         pass.setInputCloud(cloud_remove);
         pass.setFilterFieldName("z");
-        pass.setFilterLimits (-_sensor_height, 5);
+        pass.setFilterLimits (-_sensor_height, 3);
         pass.filter(*cloud_filtered);
-
         cout << "filter done."<<endl;
+
+//        pcl::VoxelGrid<pcl::PointXYZ> vg; //体素栅格下采样对象
+//        vg.setInputCloud (cloud_pass);
+//        vg.setLeafSize (0.01f, 0.01f, 0.01f); //设置采样的体素大小
+//        vg.filter (*cloud_filtered);  //执行采样保存数据
         // 显示点云
         if(_show){
             boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer(new pcl::visualization::PCLVisualizer(" cloud viewer"));
             viewer->setBackgroundColor(0, 0, 0);
-            viewer->addPointCloud(cloud_filtered, "fliter cloud");
+            viewer->addPointCloud(cloud_remove, "fliter cloud");
             viewer->addCoordinateSystem(1.0);
             viewer->spin();
         }
@@ -127,8 +137,9 @@ std::vector<double> extractsegments::calculate_spatial_area(const std::vector<pa
         areas.push_back(spatial_area);
         topkpoints.clear();
     }
-    sort(areas.begin(), areas.end(), less<>());
-    for(double &area : areas)   area = area / areas[0] * 255;
+    double maxarea = 0;
+    for(const double &area : areas) maxarea = maxarea > area ? maxarea : area;
+    for(double &area : areas)   area = area / maxarea;
     return areas;
 }
 
@@ -143,13 +154,28 @@ std::vector<pcl::PointCloud<pcl::PointXYZ>::Ptr> extractsegments::extract_segmen
     vector<pcl::PointCloud<pcl::PointXYZ>::Ptr> Eucluextra; // 用于储存欧式分割后的点云
     for(auto & cluster_indice : cluster_indices){
         pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_cluster(new pcl::PointCloud<pcl::PointXYZ>);
-        for(int & indice : cluster_indice.indices)
+        double maxpointx = 0, maxpointy = 0, maxpointz = 0;
+        double minpointx = INT_MAX, minpointy = INT_MAX, minpointz = INT_MAX;
+        for(int & indice : cluster_indice.indices){
             cloud_cluster->points.push_back(cloud_filtered->points[indice]);
-        cloud_cluster->width = cloud_cluster->points.size();
-        cloud_cluster->height = 1;
-        cloud_cluster->is_dense = true;
-        Eucluextra.push_back(cloud_cluster);
+            maxpointx = maxpointx > cloud_filtered->points[indice].x ? maxpointx : cloud_filtered->points[indice].x;
+            maxpointy = maxpointy > cloud_filtered->points[indice].y ? maxpointy : cloud_filtered->points[indice].y;
+            maxpointz = maxpointz > cloud_filtered->points[indice].z ? maxpointz : cloud_filtered->points[indice].z;
+            minpointx = minpointx < cloud_filtered->points[indice].x ? minpointx : cloud_filtered->points[indice].x;
+            minpointy = minpointy < cloud_filtered->points[indice].y ? minpointy : cloud_filtered->points[indice].y;
+            minpointz = minpointz < cloud_filtered->points[indice].z ? minpointz : cloud_filtered->points[indice].z;
+        }
+        double x_diff = maxpointx - minpointx;
+        double y_diff = maxpointy - minpointy;
+        double z_diff = maxpointz - minpointz;
+        if(!_filter_flat_seg || max(x_diff, y_diff) / z_diff < _horizontal_ratio){
+            cloud_cluster->width = cloud_cluster->points.size();
+            cloud_cluster->height = 1;
+            cloud_cluster->is_dense = true;
+            Eucluextra.push_back(cloud_cluster);
+        }
     }
+    cout<<"segments size:"<<Eucluextra.size()<<endl;
     return Eucluextra;
 }
 

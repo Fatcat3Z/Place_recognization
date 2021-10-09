@@ -21,10 +21,6 @@ pcl/point_types.h
 -
 pcl/point_cloud.h
 -
-pcl/segmentation/extract_clusters.h
--
-pcl/segmentation/sac_segmentation.h
--
 pcl/filters/extract_indices.h
 -
 pcl/filters/voxel_grid.h
@@ -39,7 +35,15 @@ pcl/kdtree/kdtree.h
 -
 pcl/kdtree/impl/kdtree_flann.hpp
 -
+pcl/sample_consensus/method_types.h
+-
+pcl/sample_consensus/model_types.h
+-
 pcl/search/impl/kdtree.hpp
+-
+pcl/segmentation/extract_clusters.h
+-
+pcl/segmentation/sac_segmentation.h
 -
 pcl/ModelCoefficients.h
 -
@@ -69,12 +73,20 @@ cmath
 -
 utility
 -
+map
+-
 extract_segments.h
 ../include/extract_segments.h
+
+/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/src/extract_segments.cpp
+extract_segments.h
+/Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/src/extract_segments.h
 
 /Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/src/projection.cpp
 projection.h
 /Users/fatcat/Desktop/graduate/SLAM_WorkSpace/Place_recognization/src/projection.h
+ctime
+-
 
 /opt/homebrew/Cellar/opencv/4.5.3_2/include/opencv4/opencv2/calib3d.hpp
 opencv2/core.hpp
@@ -23348,6 +23360,8 @@ flann/util/dynamic_bitset.h
 flann/util/saving.h
 /opt/homebrew/include/flann/algorithms/flann/util/saving.h
 
+/opt/homebrew/include/flann/config.h
+
 /opt/homebrew/include/flann/defines.h
 config.h
 /opt/homebrew/include/flann/config.h
@@ -23416,6 +23430,14 @@ flann/util/timer.h
 stdlib.h
 -
 stdio.h
+-
+
+/opt/homebrew/include/flann/util/any.h
+stdexcept
+-
+ostream
+-
+typeinfo
 -
 
 /opt/homebrew/include/flann/util/dynamic_bitset.h
