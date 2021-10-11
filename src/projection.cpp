@@ -8,7 +8,7 @@ using namespace std;
 using namespace cv;
 using namespace pcl;
 
-void RangeProjection::getprojection(vector<pcl::PointCloud<pcl::PointXYZ>::Ptr>& Eucluextra) {
+vector<Mat> RangeProjection::getprojection(vector<pcl::PointCloud<pcl::PointXYZ>::Ptr>& Eucluextra, bool isspatialed) {
     clock_t startTime,endTime;
     startTime = clock();
     // 计算点云的各项参数
@@ -56,23 +56,23 @@ void RangeProjection::getprojection(vector<pcl::PointCloud<pcl::PointXYZ>::Ptr>&
         }
         depth_order++;
     }
-    Mat spatial_projection = frontprojection(cloud_segments, pointnorder, 0);
+    vector<Mat> res = frontprojection(cloud_segments, pointnorder, isspatialed);
     Mat scancontext_proj = scancontext(cloud_segments);
+    res.push_back(scancontext_proj);
     // 已经按照距离由远到近进行段排序，使距离近的点云能够在投影时覆盖距离元的点云
 //    cout<<"project points:"<<cloud_segments.size()<<endl;
     endTime = clock();
     cout << "The run time is: " <<(double)(endTime - startTime) / CLOCKS_PER_SEC << "s" << endl;
     // cout<<depth_order_mat<<endl;
     if(_showprojectios){
-        imshow("spatial_area projection", spatial_projection);
-        moveWindow("spatial_area projection", 0, 0);
         imshow("ScanContext", scancontext_proj);
         moveWindow("ScanContext", 0, 90);
         waitKey(0);
     }
+    return res;
 }
 
-cv::Mat RangeProjection::frontprojection(const std::vector<std::vector<double>>& cloud_segments,
+std::vector<cv::Mat> RangeProjection::frontprojection(const std::vector<std::vector<double>>& cloud_segments,
                                          map<PointXYZ, vector<double>, map_compare> pointnorder,
                                          int state){
     Mat range_mat = Mat::zeros(_proj_H, _proj_W, CV_32FC1);
@@ -118,16 +118,20 @@ cv::Mat RangeProjection::frontprojection(const std::vector<std::vector<double>>&
         moveWindow("depth order projection", 0, 360);
 
     }
-    if(!state){
+    if(state){
         Mat spatial_projection;
         vector<Mat> final(3);
         final[0] = range_mat;
         final[1] = depth_order_mat;
         final[2] = spatial_area_mat;
         merge(final, spatial_projection);
-        return spatial_projection;
+        if(_showprojectios){
+            imshow("spatial_area projection", spatial_projection);
+            moveWindow("spatial_area projection", 0, 0);
+        }
+        return {range_mat, depth_order_mat, spatial_area_mat};
     }else{
-        return range_mat;
+        return {range_mat};
     }
 }
 

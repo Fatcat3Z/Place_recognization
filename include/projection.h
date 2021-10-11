@@ -37,10 +37,9 @@ public:
     _scan_ring(64),
     _scan_top(4),
     _sensor_height(1.8){};
-
-    void getprojection(std::vector<pcl::PointCloud<pcl::PointXYZ>::Ptr>& Eucluextra);
+    std::vector<cv::Mat> getprojection(std::vector<pcl::PointCloud<pcl::PointXYZ>::Ptr>& Eucluextra, bool isspatialed);
     extractsegments extractor;
-    cv::Mat frontprojection(const std::vector<std::vector<double>>& cloud_segments, std::map<pcl::PointXYZ, std::vector<double>, map_compare> pointnorder, int state);
+    std::vector<cv::Mat> frontprojection(const std::vector<std::vector<double>>& cloud_segments, std::map<pcl::PointXYZ, std::vector<double>, map_compare> pointnorder, int state);
     static bool compareclouddep(const std::pair<pcl::PointCloud<pcl::PointXYZ>::Ptr, double>& cloudA,
                                 const std::pair<pcl::PointCloud<pcl::PointXYZ>::Ptr, double>& cloudB);
     static bool comparecentroiddep(const std::pair<pcl::PointXYZ, double>& cloudA,
