@@ -11,7 +11,7 @@ int main() {
     pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_flitered (new pcl::PointCloud<pcl::PointXYZ>);
 
     extractsegments extractor;
-    extractor.filtercloud(cloud, cloud_flitered);
+    extractor.filtercloud(cloud, cloud_flitered, true);
     vector<pcl::PointCloud<pcl::PointXYZ>::Ptr> Eucluextra = extractor.extract_segments(cloud_flitered);
     pcl::PointXYZ pointa = {0, 0, 0};
     pcl::PointXYZ pointb = {1, 0, 0};

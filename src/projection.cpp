@@ -70,7 +70,6 @@ void RangeProjection::getprojection(vector<pcl::PointCloud<pcl::PointXYZ>::Ptr>&
         moveWindow("ScanContext", 0, 90);
         waitKey(0);
     }
-
 }
 
 cv::Mat RangeProjection::frontprojection(const std::vector<std::vector<double>>& cloud_segments,

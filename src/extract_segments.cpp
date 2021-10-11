@@ -21,7 +21,7 @@ std::vector<pcl::PointIndices> extractsegments::extract_cluster_indices(const pc
     return cluster_indices;
 }
 
-void extractsegments::filtercloud(pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud, pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud_filtered) {
+void extractsegments::filtercloud(pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud, pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud_filtered, bool isvoxeled) {
     if (!cloud->empty()){
         pcl::search::KdTree<pcl::PointXYZ>::Ptr tree(new pcl::search::KdTree<pcl::PointXYZ>());
 
@@ -72,11 +72,13 @@ void extractsegments::filtercloud(pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud, pc
         pass.setFilterLimits (-_sensor_height, 3);
         pass.filter(*cloud_filtered);
 //        cout << "filter done."<<endl;
-
-//        pcl::VoxelGrid<pcl::PointXYZ> vg; //体素栅格下采样对象
-//        vg.setInputCloud (cloud_pass);
-//        vg.setLeafSize (0.01f, 0.01f, 0.01f); //设置采样的体素大小
-//        vg.filter (*cloud_filtered);  //执行采样保存数据
+        // 体素下采样过大的话，会有空洞点，对后续卷积是否会有影响？
+        if(isvoxeled){
+            pcl::VoxelGrid<pcl::PointXYZ> vg; //体素栅格下采样对象
+            vg.setInputCloud (cloud_filtered);
+            vg.setLeafSize (0.08f, 0.08f, 0.08f); //设置采样的体素大小
+            vg.filter (*cloud_filtered);  //执行采样保存数据
+        }
         // 显示点云
         if(_show){
             boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer(new pcl::visualization::PCLVisualizer(" cloud viewer"));

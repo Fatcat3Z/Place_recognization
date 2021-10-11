@@ -44,7 +44,7 @@ public:
     _horizontal_ratio(15),
     _sensor_height(sensor_height){};
     std::vector<pcl::PointIndices> extract_cluster_indices(const pcl::PointCloud<pcl::PointXYZ>::Ptr& cloud_filtered);
-    void filtercloud(pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud, pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud_filtered);
+    void filtercloud(pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud, pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud_filtered, bool isvoxeled);
     static pcl::PointXYZ calculate_centroid(pcl::PointCloud<pcl::PointXYZ>::Ptr& cloud);
     static double calculate_area_of_triangle(const pcl::PointXYZ& pointa, const pcl::PointXYZ& pointb, const pcl::PointXYZ& pointc);
     std::vector<double> calculate_spatial_area(const std::vector<std::pair<pcl::PointXYZ, double>>& centroids, int topk);
