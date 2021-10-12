@@ -46,9 +46,9 @@ public:
     std::vector<pcl::PointIndices> extract_cluster_indices(const pcl::PointCloud<pcl::PointXYZ>::Ptr& cloud_filtered);
     void filtercloud(pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud, pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud_filtered, bool isvoxeled);
     static pcl::PointXYZ calculate_centroid(pcl::PointCloud<pcl::PointXYZ>::Ptr& cloud);
-    static double calculate_area_of_triangle(const pcl::PointXYZ& pointa, const pcl::PointXYZ& pointb, const pcl::PointXYZ& pointc);
-    std::vector<double> calculate_spatial_area(const std::vector<std::pair<pcl::PointXYZ, double>>& centroids, int topk);
-    static bool comparedepth(const std::pair<pcl::PointXYZ, double>& pointdepthA, const std::pair<pcl::PointXYZ, double>& pointdepthB);
+    static float calculate_area_of_triangle(const pcl::PointXYZ& pointa, const pcl::PointXYZ& pointb, const pcl::PointXYZ& pointc);
+    std::vector<float> calculate_spatial_area(const std::vector<std::pair<pcl::PointXYZ, float>>& centroids, int topk);
+    static bool comparedepth(const std::pair<pcl::PointXYZ, float>& pointdepthA, const std::pair<pcl::PointXYZ, float>& pointdepthB);
 
     std::vector<pcl::PointCloud<pcl::PointXYZ>::Ptr> extract_segments(const pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud_filtered);
 
@@ -63,7 +63,7 @@ private:
     float _max_spatial_distance;  // 最远空间特征距离（组成三角形）
     bool _show;
     bool _filter_flat_seg;
-    double _horizontal_ratio;
+    float _horizontal_ratio;
 };
 
 #endif //PLACE_RECOGNIZATION_EXTRACT_SEGMENTS_H

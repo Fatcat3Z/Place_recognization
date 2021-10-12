@@ -99,39 +99,39 @@ pcl::PointXYZ extractsegments::calculate_centroid(pcl::PointCloud<pcl::PointXYZ>
     return {centroid(0), centroid(1), centroid(2)};
 }
 
-double extractsegments::calculate_area_of_triangle(const pcl::PointXYZ& pointa, const pcl::PointXYZ& pointb, const pcl::PointXYZ& pointc) {
-    double dista = pcl::euclideanDistance(pointa, pointb);
-    double distb = pcl::euclideanDistance(pointa, pointc);
-    double distc = pcl::euclideanDistance(pointc, pointb);
-    double p = 0.5 * (dista + distb + distc);
-    double res = 0;
-    double halensum = p * (p - dista) * (p - distb) * (p - distc);
+float extractsegments::calculate_area_of_triangle(const pcl::PointXYZ& pointa, const pcl::PointXYZ& pointb, const pcl::PointXYZ& pointc) {
+    float dista = pcl::euclideanDistance(pointa, pointb);
+    float distb = pcl::euclideanDistance(pointa, pointc);
+    float distc = pcl::euclideanDistance(pointc, pointb);
+    float p = 0.5 * (dista + distb + distc);
+    float res = 0;
+    float halensum = p * (p - dista) * (p - distb) * (p - distc);
     if(halensum > 0)    res = sqrt(halensum);
     return res;
 }
 
-std::vector<double> extractsegments::calculate_spatial_area(const std::vector<pair<pcl::PointXYZ, double>>& centroids, int topk){
-    vector<double> areas;
-    double area_mat[centroids.size()][topk-2];  // 面积缓存表
-    double area_factor[centroids.size()][topk-2];
+std::vector<float> extractsegments::calculate_spatial_area(const std::vector<pair<pcl::PointXYZ, float>>& centroids, int topk){
+    vector<float> areas;
+    float area_mat[centroids.size()][topk-2];  // 面积缓存表
+    float area_factor[centroids.size()][topk-2];
     for(int i = 0; i< centroids.size(); i++){
-        vector<pair<pcl::PointXYZ, double> > topkpoints;
+        vector<pair<pcl::PointXYZ, float> > topkpoints;
         // 计算所有距离，选取ktop个最近邻
         for(int j = 0; j< centroids.size(); j++){
-            double dist = pcl::euclideanDistance(centroids[i].first, centroids[j].first);
+            float dist = pcl::euclideanDistance(centroids[i].first, centroids[j].first);
             topkpoints.emplace_back(make_pair(centroids[j].first, dist));
         }
         sort(topkpoints.begin(), topkpoints.end(), comparedepth);
         // 计算空间三角形面积以及每个三角形的权重因子
         pcl::PointXYZ pointA = topkpoints[0].first, pointB = topkpoints[1].first;
-        double mindist = topkpoints[2].second;
-        double factor_sum = 0;
+        float mindist = topkpoints[2].second;
+        float factor_sum = 0;
         for(int m = 2; m < topk; m++){
             area_mat[i][m] = calculate_area_of_triangle(pointA, pointB, topkpoints[m].first);
             area_factor[i][m] = exp((topkpoints[m].second / mindist) * area_mat[i][m]);
             factor_sum += area_factor[i][m];
         }
-        double spatial_area = 0;
+        float spatial_area = 0;
         for(int n = 2; n < topk; n++){
             spatial_area += (area_factor[i][n] / factor_sum) * area_mat[i][n];
         }
@@ -139,14 +139,14 @@ std::vector<double> extractsegments::calculate_spatial_area(const std::vector<pa
         areas.push_back(spatial_area);
         topkpoints.clear();
     }
-    double maxarea = 0;
-    for(const double &area : areas) maxarea = maxarea > area ? maxarea : area;
-    for(double &area : areas)   area = area / maxarea;
+    float maxarea = 0;
+    for(const float &area : areas) maxarea = maxarea > area ? maxarea : area;
+    for(float &area : areas)   area = area / maxarea;
     return areas;
 }
 
-bool extractsegments::comparedepth(const pair<pcl::PointXYZ, double> &pointdepthA,
-                                   const pair<pcl::PointXYZ, double> &pointdepthB) {
+bool extractsegments::comparedepth(const pair<pcl::PointXYZ, float> &pointdepthA,
+                                   const pair<pcl::PointXYZ, float> &pointdepthB) {
     return pointdepthA.second < pointdepthB.second;
 }
 
@@ -156,8 +156,8 @@ std::vector<pcl::PointCloud<pcl::PointXYZ>::Ptr> extractsegments::extract_segmen
     vector<pcl::PointCloud<pcl::PointXYZ>::Ptr> Eucluextra; // 用于储存欧式分割后的点云
     for(auto & cluster_indice : cluster_indices){
         pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_cluster(new pcl::PointCloud<pcl::PointXYZ>);
-        double maxpointx = 0, maxpointy = 0, maxpointz = 0;
-        double minpointx = INT_MAX, minpointy = INT_MAX, minpointz = INT_MAX;
+        float maxpointx = 0, maxpointy = 0, maxpointz = 0;
+        float minpointx = INT_MAX, minpointy = INT_MAX, minpointz = INT_MAX;
         for(int & indice : cluster_indice.indices){
             cloud_cluster->points.push_back(cloud_filtered->points[indice]);
             maxpointx = maxpointx > cloud_filtered->points[indice].x ? maxpointx : cloud_filtered->points[indice].x;
@@ -167,9 +167,9 @@ std::vector<pcl::PointCloud<pcl::PointXYZ>::Ptr> extractsegments::extract_segmen
             minpointy = minpointy < cloud_filtered->points[indice].y ? minpointy : cloud_filtered->points[indice].y;
             minpointz = minpointz < cloud_filtered->points[indice].z ? minpointz : cloud_filtered->points[indice].z;
         }
-        double x_diff = maxpointx - minpointx;
-        double y_diff = maxpointy - minpointy;
-        double z_diff = maxpointz - minpointz;
+        float x_diff = maxpointx - minpointx;
+        float y_diff = maxpointy - minpointy;
+        float z_diff = maxpointz - minpointz;
         if(!_filter_flat_seg || max(x_diff, y_diff) / z_diff < _horizontal_ratio){
             cloud_cluster->width = cloud_cluster->points.size();
             cloud_cluster->height = 1;
