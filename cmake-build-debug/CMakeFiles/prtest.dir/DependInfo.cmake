@@ -32,7 +32,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/include/eigen3"
   "/usr/include/ni"
   "/usr/include/openni2"
-  "/usr/include/opencv4"
+  "/usr/local/include/opencv"
   )
 
 # The set of dependency files which are needed:

@@ -648,6 +648,9 @@ CMakeFiles/Place_recognization.dir/src/extract_segments.cpp.o: \
  /usr/include/vtk-7.1/vtk_kwiml.h \
  /usr/include/vtk-7.1/vtkkwiml/abi.h \
  /usr/include/vtk-7.1/vtkkwiml/int.h
+CMakeFiles/Place_recognization.dir/src/globalfeature.cpp.o: \
+ ../include/globalfeature.h \
+ ../src/globalfeature.cpp
 CMakeFiles/Place_recognization.dir/src/projection.cpp.o: \
  ../include/extract_segments.h \
  ../include/projection.h \

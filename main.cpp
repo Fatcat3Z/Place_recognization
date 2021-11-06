@@ -2,13 +2,14 @@
 #include "extract_segments.h"
 #include "projection.h"
 
+
 using namespace std;
 using namespace cv;
 
 int main() {
     pcl::PCDReader reader;
     pcl::PointCloud<pcl::PointXYZ>::Ptr cloud (new pcl::PointCloud<pcl::PointXYZ>);
-    reader.read ("/home/wy-lab/Documents/GitHub/Place_recognization/pcd/0.pcd", *cloud);
+    reader.read ("/home/wy-lab/Documents/GitHub/Place_recognization/pcd/1.pcd", *cloud);
     pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_flitered (new pcl::PointCloud<pcl::PointXYZ>);
 
     extractsegments extractor;
@@ -32,7 +33,7 @@ int main() {
 
     if(isspatial){
         for(int i=0; i< 5; i++){
-            imwrite(savepath + names[i] + ".jpg", projections[i]);
+            imwrite(savepath + names[i] + "1.jpg", projections[i]);
         }
     }
 //    vector<Mat> projections(4);

@@ -190,6 +190,30 @@ src/extract_segments.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Place_recognization.dir/build.make CMakeFiles/Place_recognization.dir/src/extract_segments.cpp.s
 .PHONY : src/extract_segments.cpp.s
 
+src/globalfeature.o: src/globalfeature.cpp.o
+.PHONY : src/globalfeature.o
+
+# target to build an object file
+src/globalfeature.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Place_recognization.dir/build.make CMakeFiles/Place_recognization.dir/src/globalfeature.cpp.o
+.PHONY : src/globalfeature.cpp.o
+
+src/globalfeature.i: src/globalfeature.cpp.i
+.PHONY : src/globalfeature.i
+
+# target to preprocess a source file
+src/globalfeature.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Place_recognization.dir/build.make CMakeFiles/Place_recognization.dir/src/globalfeature.cpp.i
+.PHONY : src/globalfeature.cpp.i
+
+src/globalfeature.s: src/globalfeature.cpp.s
+.PHONY : src/globalfeature.s
+
+# target to generate assembly for a file
+src/globalfeature.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Place_recognization.dir/build.make CMakeFiles/Place_recognization.dir/src/globalfeature.cpp.s
+.PHONY : src/globalfeature.cpp.s
+
 src/projection.o: src/projection.cpp.o
 .PHONY : src/projection.o
 
@@ -254,6 +278,9 @@ help:
 	@echo "... src/extract_segments.o"
 	@echo "... src/extract_segments.i"
 	@echo "... src/extract_segments.s"
+	@echo "... src/globalfeature.o"
+	@echo "... src/globalfeature.i"
+	@echo "... src/globalfeature.s"
 	@echo "... src/projection.o"
 	@echo "... src/projection.i"
 	@echo "... src/projection.s"

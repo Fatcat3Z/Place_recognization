@@ -5,7 +5,7 @@
 		<Option title="Place_recognization"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\usr\local\;CMake Files\..\..\..\..\..\usr\local\share\;CMake Files\..\..\..\..\..\usr\local\share\OpenCV\;CMake Files\..\..\..\..\..\usr\lib\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\opencv4\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\pcl\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\pcl\Modules\;CMake Files\..\..\..\..\..\usr\lib\cmake\;CMake Files\..\..\..\..\..\usr\lib\cmake\vtk-7.1\;CMake Files\..\..\..\..\..\usr\lib\cmake\vtk-7.1\Modules\;CMake Files\..\..\..\..\..\usr\lib\cmake\eigen3\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\usr\lib\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\opencv4\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\pcl\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\pcl\Modules\;CMake Files\..\..\..\..\..\usr\lib\cmake\;CMake Files\..\..\..\..\..\usr\lib\cmake\vtk-7.1\;CMake Files\..\..\..\..\..\usr\lib\cmake\vtk-7.1\Modules\;CMake Files\..\..\..\..\..\usr\lib\cmake\eigen3\;CMake Files\..\..\..\..\..\usr\local\;CMake Files\..\..\..\..\..\usr\local\share\;CMake Files\..\..\..\..\..\usr\local\share\OpenCV\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="/home/wy-lab/Documents/GitHub/Place_recognization/cmake-build-debug"/>
@@ -58,7 +58,7 @@
 					<Add directory="/usr/include/eigen3"/>
 					<Add directory="/usr/include/ni"/>
 					<Add directory="/usr/include/openni2"/>
-					<Add directory="/usr/include/opencv4"/>
+					<Add directory="/usr/local/include/opencv"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -96,7 +96,7 @@
 					<Add directory="/usr/include/eigen3"/>
 					<Add directory="/usr/include/ni"/>
 					<Add directory="/usr/include/openni2"/>
-					<Add directory="/usr/include/opencv4"/>
+					<Add directory="/usr/local/include/opencv"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -134,7 +134,7 @@
 					<Add directory="/usr/include/eigen3"/>
 					<Add directory="/usr/include/ni"/>
 					<Add directory="/usr/include/openni2"/>
-					<Add directory="/usr/include/opencv4"/>
+					<Add directory="/usr/local/include/opencv"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -172,7 +172,7 @@
 					<Add directory="/usr/include/eigen3"/>
 					<Add directory="/usr/include/ni"/>
 					<Add directory="/usr/include/openni2"/>
-					<Add directory="/usr/include/opencv4"/>
+					<Add directory="/usr/local/include/opencv"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -196,6 +196,9 @@
 		<Unit filename="/home/wy-lab/Documents/GitHub/Place_recognization/src/extract_segments.cpp">
 			<Option target="Place_recognization"/>
 		</Unit>
+		<Unit filename="/home/wy-lab/Documents/GitHub/Place_recognization/src/globalfeature.cpp">
+			<Option target="Place_recognization"/>
+		</Unit>
 		<Unit filename="/home/wy-lab/Documents/GitHub/Place_recognization/src/projection.cpp">
 			<Option target="Place_recognization"/>
 		</Unit>
@@ -205,19 +208,7 @@
 		<Unit filename="/home/wy-lab/Documents/GitHub/Place_recognization/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
-		<Unit filename="/home/wy-lab/Documents/GitHub/Place_recognization/../../../../../usr/local/share/OpenCV/OpenCVConfig-version.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\local\share\OpenCV\"/>
-		</Unit>
 		<Unit filename="/home/wy-lab/Documents/GitHub/Place_recognization/../../../../../usr/lib/x86_64-linux-gnu/cmake/opencv4/OpenCVConfig-version.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\opencv4\"/>
-		</Unit>
-		<Unit filename="/home/wy-lab/Documents/GitHub/Place_recognization/../../../../../usr/lib/x86_64-linux-gnu/cmake/opencv4/OpenCVConfig.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\opencv4\"/>
-		</Unit>
-		<Unit filename="/home/wy-lab/Documents/GitHub/Place_recognization/../../../../../usr/lib/x86_64-linux-gnu/cmake/opencv4/OpenCVModules-release.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\opencv4\"/>
-		</Unit>
-		<Unit filename="/home/wy-lab/Documents/GitHub/Place_recognization/../../../../../usr/lib/x86_64-linux-gnu/cmake/opencv4/OpenCVModules.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\opencv4\"/>
 		</Unit>
 		<Unit filename="/home/wy-lab/Documents/GitHub/Place_recognization/../../../../../usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake">
@@ -438,6 +429,18 @@
 		</Unit>
 		<Unit filename="/home/wy-lab/Documents/GitHub/Place_recognization/../../../../../usr/lib/cmake/eigen3/Eigen3Targets.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\cmake\eigen3\"/>
+		</Unit>
+		<Unit filename="/home/wy-lab/Documents/GitHub/Place_recognization/../../../../../usr/local/share/OpenCV/OpenCVConfig-version.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\local\share\OpenCV\"/>
+		</Unit>
+		<Unit filename="/home/wy-lab/Documents/GitHub/Place_recognization/../../../../../usr/local/share/OpenCV/OpenCVConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\local\share\OpenCV\"/>
+		</Unit>
+		<Unit filename="/home/wy-lab/Documents/GitHub/Place_recognization/../../../../../usr/local/share/OpenCV/OpenCVModules-release.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\local\share\OpenCV\"/>
+		</Unit>
+		<Unit filename="/home/wy-lab/Documents/GitHub/Place_recognization/../../../../../usr/local/share/OpenCV/OpenCVModules.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\local\share\OpenCV\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>
