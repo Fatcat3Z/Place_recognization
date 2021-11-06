@@ -69,7 +69,7 @@ void extractsegments::filtercloud(pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud, pc
         pcl::PassThrough<pcl::PointXYZ> pass;
         pass.setInputCloud(cloud_remove);
         pass.setFilterFieldName("z");
-        pass.setFilterLimits (-_sensor_height, 3);
+        pass.setFilterLimits (-(_sensor_height-0.2), 3);
         pass.filter(*cloud_filtered);
 //        cout << "filter done."<<endl;
         // 体素下采样过大的话，会有空洞点，对后续卷积是否会有影响？
@@ -83,7 +83,7 @@ void extractsegments::filtercloud(pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud, pc
         if(_show){
             boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer(new pcl::visualization::PCLVisualizer(" cloud viewer"));
             viewer->setBackgroundColor(0, 0, 0);
-            viewer->addPointCloud(cloud_remove, "fliter cloud");
+            viewer->addPointCloud(cloud_filtered, "fliter cloud");
             viewer->addCoordinateSystem(1.0);
             viewer->spin();
         }
@@ -181,6 +181,21 @@ std::vector<pcl::PointCloud<pcl::PointXYZ>::Ptr> extractsegments::extract_segmen
     return Eucluextra;
 }
 
+void extractsegments::savesegmentsbin(const std::vector<pcl::PointCloud<pcl::PointXYZ>::Ptr>& segments, const std::string& filepath){
+    pcl::PointCloud<pcl::PointXYZI>::Ptr savepoints(new pcl::PointCloud<pcl::PointXYZI>);
+    for(const auto& segment : segments){
+        for(const auto& point: *segment){
+            pcl::PointXYZI savepoint;
+            savepoint.x = point.x;
+            savepoint.y = point.y;
+            savepoint.z = point.z;
+            savepoint.intensity = 1;
+            (*savepoints).push_back(savepoint);
+        }
+    }
+    pcl::PCDWriter writer;
+    writer.write(filepath, *savepoints);
+}
 
 
 

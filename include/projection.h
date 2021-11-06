@@ -38,6 +38,7 @@ public:
     _scan_top(4),
     _sensor_height(1.8){};
     std::vector<cv::Mat> getprojection(std::vector<pcl::PointCloud<pcl::PointXYZ>::Ptr>& Eucluextra, bool isspatialed);
+    std::vector<cv::Mat> getprojection(pcl::PointCloud<pcl::PointXYZ>::Ptr objremoved);
     extractsegments extractor;
     std::vector<cv::Mat> frontprojection(const std::vector<std::vector<float>>& cloud_segments, std::map<pcl::PointXYZ, std::vector<float>, map_compare> pointnorder, int state);
     cv::Mat getnormalmap(const cv::Mat& pointindicesmap);
@@ -49,6 +50,12 @@ public:
                               const std::vector<float>& cloudB);
     void set_segment_num(int segments){ _segments = segments;}
     cv::Mat scancontext(const std::vector<std::vector<float>>& cloud_segments);
+    void projectsegments(const std::string& rootpath, const std::vector<std::string>& filenames, const std::string& saverootpath);
+    void projectscene(const std::string& rootpath,
+                      const std::vector<std::string> &filenames,
+                      const std::vector<std::string>& boxfilepath,
+                      const std::string &saverootpath,
+                      bool segments);
 
 private:
     int _segments;

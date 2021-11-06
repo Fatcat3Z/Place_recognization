@@ -1,4 +1,0 @@
-/home/wy-lab/Documents/GitHub/Place_recognization/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/wy-lab/Documents/GitHub/Place_recognization/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/wy-lab/Documents/GitHub/Place_recognization/cmake-build-debug/CMakeFiles/prtest.dir
-/home/wy-lab/Documents/GitHub/Place_recognization/cmake-build-debug/CMakeFiles/Place_recognization.dir
