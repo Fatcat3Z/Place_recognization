@@ -83,12 +83,12 @@ clean: CMakeFiles/Place_recognization.dir/clean
 CMakeFiles/prtest.dir/all: CMakeFiles/Place_recognization.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/prtest.dir/build.make CMakeFiles/prtest.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/prtest.dir/build.make CMakeFiles/prtest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/wy-lab/Documents/GitHub/Place_recognization/cmake-build-debug/CMakeFiles --progress-num=5,6 "Built target prtest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/wy-lab/Documents/GitHub/Place_recognization/cmake-build-debug/CMakeFiles --progress-num=6,7 "Built target prtest"
 .PHONY : CMakeFiles/prtest.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/prtest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/wy-lab/Documents/GitHub/Place_recognization/cmake-build-debug/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/wy-lab/Documents/GitHub/Place_recognization/cmake-build-debug/CMakeFiles 7
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/prtest.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/wy-lab/Documents/GitHub/Place_recognization/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/prtest.dir/rule
@@ -109,12 +109,12 @@ CMakeFiles/prtest.dir/clean:
 CMakeFiles/Place_recognization.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Place_recognization.dir/build.make CMakeFiles/Place_recognization.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Place_recognization.dir/build.make CMakeFiles/Place_recognization.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/wy-lab/Documents/GitHub/Place_recognization/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4 "Built target Place_recognization"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/wy-lab/Documents/GitHub/Place_recognization/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5 "Built target Place_recognization"
 .PHONY : CMakeFiles/Place_recognization.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Place_recognization.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/wy-lab/Documents/GitHub/Place_recognization/cmake-build-debug/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/wy-lab/Documents/GitHub/Place_recognization/cmake-build-debug/CMakeFiles 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Place_recognization.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/wy-lab/Documents/GitHub/Place_recognization/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/Place_recognization.dir/rule

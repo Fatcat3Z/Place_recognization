@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/wy-lab/Documents/GitHub/Place_recognization/src/extract_segments.cpp" "/home/wy-lab/Documents/GitHub/Place_recognization/cmake-build-debug/CMakeFiles/Place_recognization.dir/src/extract_segments.cpp.o"
+  "/home/wy-lab/Documents/GitHub/Place_recognization/src/globalfeature.cpp" "/home/wy-lab/Documents/GitHub/Place_recognization/cmake-build-debug/CMakeFiles/Place_recognization.dir/src/globalfeature.cpp.o"
   "/home/wy-lab/Documents/GitHub/Place_recognization/src/projection.cpp" "/home/wy-lab/Documents/GitHub/Place_recognization/cmake-build-debug/CMakeFiles/Place_recognization.dir/src/projection.cpp.o"
   "/home/wy-lab/Documents/GitHub/Place_recognization/src/spatial_calculation.cpp" "/home/wy-lab/Documents/GitHub/Place_recognization/cmake-build-debug/CMakeFiles/Place_recognization.dir/src/spatial_calculation.cpp.o"
   )
@@ -35,7 +36,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/include/eigen3"
   "/usr/include/ni"
   "/usr/include/openni2"
-  "/usr/include/opencv4"
+  "/usr/local/include/opencv"
   )
 
 # The set of dependency files which are needed:
