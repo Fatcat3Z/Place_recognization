@@ -24,7 +24,9 @@ add_library(${PROJECT_NAME} SHARED
         src/extract_segments.cpp
         src/projection.cpp
         src/spatial_calculation.cpp
-        src/globalfeature.cpp)
+        src/globalfeature.cpp
+        src/pointsregistration.cpp
+        src/deductpoints.cpp)
 target_link_libraries(${PROJECT_NAME}
         ${OpenCV_LIBS}
         ${EIGEN3_LIBS}

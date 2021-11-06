@@ -51,6 +51,7 @@ public:
     static bool comparedepth(const std::pair<pcl::PointXYZ, float>& pointdepthA, const std::pair<pcl::PointXYZ, float>& pointdepthB);
 
     std::vector<pcl::PointCloud<pcl::PointXYZ>::Ptr> extract_segments(const pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud_filtered);
+    void savesegmentsbin(const std::vector<pcl::PointCloud<pcl::PointXYZ>::Ptr>& segments, const std::string& filepath);
 
 private:
     float _clustertolerance;      // 最近邻搜索范围
