@@ -57,8 +57,9 @@ vector<Mat> RangeProjection::getprojection(vector<pcl::PointCloud<pcl::PointXYZ>
         depth_order++;
     }
     vector<Mat> res = frontprojection(cloud_segments, pointnorder, isspatialed);
-    Mat scancontext_proj = scancontext(cloud_segments);
-    res.push_back(scancontext_proj);
+    vector<Mat> scancontext_proj = scancontextwithspatial(cloud_segments, pointnorder, isspatialed);
+    res.push_back(scancontext_proj[0]);
+    res.push_back(scancontext_proj[1]);
     // 已经按照距离由远到近进行段排序，使距离近的点云能够在投影时覆盖距离元的点云
 //    cout<<"project points:"<<cloud_segments.size()<<endl;
 
@@ -229,10 +230,41 @@ cv::Mat RangeProjection::scancontext(const std::vector<std::vector<float>>& clou
         if(point_height > 0 && point_height < _scan_top){
             if(point_height > scancontext.at<float>(idx_ring, idx_sector)){
                 scancontext.at<char>(idx_ring, idx_sector) = point_height * 255;
+
             }
         }
     }
     return scancontext;
+}
+
+std::vector<cv::Mat> RangeProjection::scancontextwithspatial(const std::vector<std::vector<float>> &cloud_segments,
+                                                             std::map<pcl::PointXYZ, std::vector<float>, map_compare> pointnorder,
+                                                             int state) {
+    Mat scancontext = Mat::zeros(_proj_H, _proj_W, CV_8UC1);
+    Mat spatialmat = Mat::zeros(_proj_H, _proj_W, CV_8UC1);
+    float gap_ring = _max_range / _scan_ring;      // 距离分辨率
+    float gap_sector = 360.0 / _scan_sector;       // 角度分辨率
+    for(const auto& point: cloud_segments){
+        pcl::PointXYZ targetpoint(point[0], point[1], point[2]);
+        float point_height = (point[2] + _sensor_height) / _scan_top;
+        float yaw = - atan2(point[1], point[0]);
+        float theta = 180 * (yaw / CV_PI + 1.0);
+        float faraway = sqrt(point[0] * point[0] + point[1] * point[1]);
+        //  整除角度分辨率，获得编码序号
+        int idx_ring = (int)(faraway / gap_ring);   // 图像纵坐标
+        int idx_sector = (int)(theta / gap_sector); // 图像横坐标
+        idx_ring = idx_ring >= _scan_ring ? _scan_ring - 1 : idx_ring;
+        if(point_height > 0 && point_height < _scan_top){
+            if(point_height > scancontext.at<float>(idx_ring, idx_sector)){
+                scancontext.at<char>(idx_ring, idx_sector) = point_height * 255;
+                spatialmat.at<char>(idx_ring, idx_sector) = (pointnorder.find(targetpoint)->second[1]) * 255;
+            }
+        }
+    }
+    if(state)
+        return {scancontext, spatialmat};
+    else
+        return {scancontext};
 }
 
 cv::Mat RangeProjection::getnormalmap(const cv::Mat& pointindicesmap) {
@@ -265,6 +297,43 @@ cv::Mat RangeProjection::getnormalmap(const cv::Mat& pointindicesmap) {
     return normal_mat;
 }
 
+void RangeProjection::projectall(const std::string &rootpath, const std::vector<std::string> &filenames,
+                                 const std::string &saverootpath) {
+    float all_time = 0;
+    float average_time = 0;
+    int count = 1;
+    for(const string& file: filenames){
+        clock_t startTime,endTime;
+        startTime = clock();
+        pcl::PCDReader reader;
+        pcl::PointCloud<pcl::PointXYZ>::Ptr cloud (new pcl::PointCloud<pcl::PointXYZ>);
+        reader.read (rootpath + file, *cloud);
+        pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_flitered (new pcl::PointCloud<pcl::PointXYZ>);
+
+        extractsegments extractor;
+        extractor.filtercloud(cloud, cloud_flitered, true);
+        RangeProjection projection(false, false);
+        bool isspatial = true;
+        vector<Mat> projections = projection.getprojection(cloud_flitered);
+        endTime = clock();
+        all_time += (float)(endTime - startTime) / CLOCKS_PER_SEC;
+        average_time = all_time / count;
+        cout << "The average run time is: " << average_time << "s" << endl;
+        count++;
+        if(isspatial){
+            int pos=file.find_last_of('/');
+            string s1(file.substr(pos + 1));
+            int want_length = 4;
+            string pcdnumber = s1.substr(0, s1.rfind('.'));
+            string addzero(want_length - pcdnumber.length(), '0');
+            imwrite(saverootpath + "RangeMat/" + addzero + pcdnumber + ".jpg", projections[0]);
+            imwrite(saverootpath + "NormalMat/"+ addzero + pcdnumber + ".jpg", projections[1]);
+            imwrite(saverootpath + "ScanContextMat/"+ addzero + pcdnumber + ".jpg", projections[2]);
+            cout<<saverootpath + "RangeMat/" + addzero + pcdnumber + ".jpg"<<endl;
+            cout<<"finish round"<<addzero + pcdnumber<<endl;
+        }
+    }
+}
 void RangeProjection::projectsegments(const std::string& rootpath, const std::vector<std::string>& filenames, const std::string& saverootpath) {
     float all_time = 0;
     float average_time = 0;
@@ -299,10 +368,11 @@ void RangeProjection::projectsegments(const std::string& rootpath, const std::ve
                 int want_length = 4;
                 string pcdnumber = s1.substr(0, s1.rfind('.'));
                 string addzero(want_length - pcdnumber.length(), '0');
-                imwrite(saverootpath + "SegRangeMat/" + addzero + pcdnumber + ".jpg", projections[0]);
-                imwrite(saverootpath + "SegSpatialAreaMat/"+ addzero + pcdnumber + ".jpg", projections[1]);
-                imwrite(saverootpath + "SegNormalMat/"+ addzero + pcdnumber + ".jpg", projections[2]);
-                imwrite(saverootpath + "SegScanContextMat/"+ addzero + pcdnumber + ".jpg", projections[3]);
+                imwrite(saverootpath + "RangeMat/" + addzero + pcdnumber + ".jpg", projections[0]);
+                imwrite(saverootpath + "SpatialMat/"+ addzero + pcdnumber + ".jpg", projections[1]);
+                imwrite(saverootpath + "NormalMat/"+ addzero + pcdnumber + ".jpg", projections[2]);
+                imwrite(saverootpath + "ScanContextMat/"+ addzero + pcdnumber + ".jpg", projections[3]);
+                imwrite(saverootpath + "SpatialSCTMat/"+ addzero + pcdnumber + ".jpg", projections[4]);
                 cout<<"finish round"<<addzero + pcdnumber<<endl;
             }
         }

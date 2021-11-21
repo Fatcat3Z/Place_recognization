@@ -50,8 +50,11 @@ void addzeros(vector<string>& filenames, const int& filelen){
     }
 }
 
-int main() {
-    string datapath = "/home/wy-lab/kitti_odometry_dataset/sequences/02/pcd/";
+int main(int argc, char* argv[]) {
+    string rootpath = argv[1];
+    // Raw Seg Rmv
+    string promode = argv[2];
+    string datapath = rootpath + "pcd/";
 //    string boxespath = "/home/wy-lab/kitti_odometry_dataset/sequences/02/boxesfiles/";
     vector<string> filenames;
 //    vector<string> boxesparameters;
@@ -60,12 +63,17 @@ int main() {
 //    getFileswithroot(boxespath, boxesparameters);
     sort(filenames.begin(), filenames.end());
 //    sort(boxesparameters.begin(), boxesparameters.end());
-    string saverootpath = "/home/wy-lab/kitti_odometry_dataset/sequences/02/RawImgs/";
+    string saverootpath = rootpath + promode + "Imgs/";
 
     RangeProjection projection;
 
 //    projection.projectscene(datapath, filenames, boxesparameters, saverootpath, false);
-    projection.projectsegments(datapath, filenames, saverootpath);
+    if(promode == "Raw")
+        projection.projectall(datapath, filenames, saverootpath);
+    else if(promode == "Seg")
+        projection.projectsegments(datapath, filenames, saverootpath);
+//    else
+//        projection.projectscene(datapath, filenames, boxesparameters, saverootpath, false);
 
 //    for(int i = 0; i< filenames.size(); i++){
 //

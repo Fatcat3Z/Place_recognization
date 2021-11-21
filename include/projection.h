@@ -50,6 +50,8 @@ public:
                               const std::vector<float>& cloudB);
     void set_segment_num(int segments){ _segments = segments;}
     cv::Mat scancontext(const std::vector<std::vector<float>>& cloud_segments);
+    std::vector<cv::Mat> scancontextwithspatial(const std::vector<std::vector<float>>& cloud_segments, std::map<pcl::PointXYZ, std::vector<float>, map_compare> pointnorder, int state);
+    void projectall(const std::string& rootpath, const std::vector<std::string>& filenames, const std::string& saverootpath);
     void projectsegments(const std::string& rootpath, const std::vector<std::string>& filenames, const std::string& saverootpath);
     void projectscene(const std::string& rootpath,
                       const std::vector<std::string> &filenames,
