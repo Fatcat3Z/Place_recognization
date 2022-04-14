@@ -3,31 +3,9 @@
 //
 #ifndef PLACE_RECOGNIZATION_EXTRACT_SEGMENTS_H
 #define PLACE_RECOGNIZATION_EXTRACT_SEGMENTS_H
-#include <Eigen/Core>
-#include <pcl/common/transforms.h>
-#include <pcl/common/distances.h>
-#include <pcl/io/pcd_io.h>
-#include <pcl/io/ply_io.h>
-#include <pcl/point_types.h>
-#include <pcl/point_cloud.h>
-#include <pcl/filters/extract_indices.h>
-#include <pcl/filters/voxel_grid.h>
-#include <pcl/filters/filter_indices.h>
-#include <pcl/filters/passthrough.h>
-#include <pcl/features/normal_3d.h>
-#include <pcl/kdtree/kdtree.h>
-#include <pcl/kdtree/impl/kdtree_flann.hpp>
-#include <pcl/sample_consensus/method_types.h>
-#include <pcl/sample_consensus/model_types.h>
-#include <pcl/search/impl/kdtree.hpp>
-#include <pcl/segmentation/extract_clusters.h>
-#include <pcl/segmentation/sac_segmentation.h>
-#include <pcl/ModelCoefficients.h>
-#include <pcl/visualization/cloud_viewer.h>
-#include <pcl/visualization/pcl_visualizer.h>
-#include <string>
-#include <queue>
 #include <opencv2/opencv.hpp>
+#include "pcl_utils.h"
+
 
 class extractsegments{
 public:
@@ -43,14 +21,14 @@ public:
     _filter_flat_seg(false),
     _horizontal_ratio(15),
     _sensor_height(sensor_height){};
-    std::vector<pcl::PointIndices> extract_cluster_indices(const pcl::PointCloud<pcl::PointXYZ>::Ptr& cloud_filtered);
-    void filtercloud(pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud, pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud_filtered, bool isvoxeled);
-    static pcl::PointXYZ calculate_centroid(pcl::PointCloud<pcl::PointXYZ>::Ptr& cloud);
-    static double calculate_area_of_triangle(const pcl::PointXYZ& pointa, const pcl::PointXYZ& pointb, const pcl::PointXYZ& pointc);
-    std::vector<double> calculate_spatial_area(const std::vector<std::pair<pcl::PointXYZ, double>>& centroids, int topk);
-    static bool comparedepth(const std::pair<pcl::PointXYZ, double>& pointdepthA, const std::pair<pcl::PointXYZ, double>& pointdepthB);
-
-    std::vector<pcl::PointCloud<pcl::PointXYZ>::Ptr> extract_segments(const pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud_filtered);
+    std::vector<pcl::PointIndices> extract_cluster_indices(const pcl::PointCloud<PointType>::Ptr& cloud_filtered);
+    void filtercloud(pcl::PointCloud<PointType>::Ptr &cloud, pcl::PointCloud<PointType>::Ptr &cloud_filtered, bool isvoxeled);
+    static PointType calculate_centroid(pcl::PointCloud<PointType>::Ptr& cloud);
+    static double calculate_area_of_triangle(const PointType& pointa, const PointType& pointb, const PointType& pointc);
+    std::vector<double> calculate_spatial_area(const std::vector<std::pair<PointType, double>>& centroids, int topk);
+    static bool comparedepth(const std::pair<PointType, double>& pointdepthA, const std::pair<PointType, double>& pointdepthB);
+    void show_senmantic_points(const pcl::PointCloud<PointType>::Ptr& cloud2show, const std::vector<int>& labels);
+    std::vector<pcl::PointCloud<PointType>::Ptr> extract_segments(const pcl::PointCloud<PointType>::Ptr &cloud_filtered);
 
 private:
     float _clustertolerance;      // 最近邻搜索范围
