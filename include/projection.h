@@ -23,7 +23,7 @@ struct map_compare{
 class RangeProjection{
 
 public:
-    RangeProjection(bool showclouds = false, bool showprojections = true, double fov_up=3.0, double fov_down=-25.0, int proj_H=64, int proj_W=900, float max_range=50.0)
+    RangeProjection(bool showclouds = false, bool showprojections = true, float fov_up=3.0, float fov_down=-25.0, int proj_H=64, int proj_W=900, float max_range=50.0)
     :_showclouds(showclouds),
     _showprojectios(showprojections),
     _fov_up(fov_up),
@@ -38,21 +38,31 @@ public:
     _scan_top(4),
     _sensor_height(1.8){};
     std::vector<cv::Mat> getprojection(std::vector<pcl::PointCloud<pcl::PointXYZ>::Ptr>& Eucluextra, bool isspatialed);
+    std::vector<cv::Mat> getprojection(pcl::PointCloud<pcl::PointXYZ>::Ptr objremoved);
     extractsegments extractor;
-    std::vector<cv::Mat> frontprojection(const std::vector<std::vector<double>>& cloud_segments, std::map<pcl::PointXYZ, std::vector<double>, map_compare> pointnorder, int state);
-    static bool compareclouddep(const std::pair<pcl::PointCloud<pcl::PointXYZ>::Ptr, double>& cloudA,
-                                const std::pair<pcl::PointCloud<pcl::PointXYZ>::Ptr, double>& cloudB);
-    static bool comparecentroiddep(const std::pair<pcl::PointXYZ, double>& cloudA,
-                                   const std::pair<pcl::PointXYZ, double>& cloudB);
-    static bool comparevecdep(const std::vector<double>& cloudA,
-                              const std::vector<double>& cloudB);
+    std::vector<cv::Mat> frontprojection(const std::vector<std::vector<float>>& cloud_segments, std::map<pcl::PointXYZ, std::vector<float>, map_compare> pointnorder, int state);
+    cv::Mat getnormalmap(const cv::Mat& pointindicesmap);
+    static bool compareclouddep(const std::pair<pcl::PointCloud<pcl::PointXYZ>::Ptr, float>& cloudA,
+                                const std::pair<pcl::PointCloud<pcl::PointXYZ>::Ptr, float>& cloudB);
+    static bool comparecentroiddep(const std::pair<pcl::PointXYZ, float>& cloudA,
+                                   const std::pair<pcl::PointXYZ, float>& cloudB);
+    static bool comparevecdep(const std::vector<float>& cloudA,
+                              const std::vector<float>& cloudB);
     void set_segment_num(int segments){ _segments = segments;}
-    cv::Mat scancontext(const std::vector<std::vector<double>>& cloud_segments);
+    cv::Mat scancontext(const std::vector<std::vector<float>>& cloud_segments);
+    std::vector<cv::Mat> scancontextwithspatial(const std::vector<std::vector<float>>& cloud_segments, std::map<pcl::PointXYZ, std::vector<float>, map_compare> pointnorder, int state);
+    void projectall(const std::string& rootpath, const std::vector<std::string>& filenames, const std::string& saverootpath);
+    void projectsegments(const std::string& rootpath, const std::vector<std::string>& filenames, const std::string& saverootpath);
+    void projectscene(const std::string& rootpath,
+                      const std::vector<std::string> &filenames,
+                      const std::vector<std::string>& boxfilepath,
+                      const std::string &saverootpath,
+                      bool segments);
 
 private:
     int _segments;
-    double _fov_up;        // 正向角度视野   C32为15
-    double _fov_down;      // 负向角度视野   C32为-16
+    float _fov_up;        // 正向角度视野   C32为15
+    float _fov_down;      // 负向角度视野   C32为-16
     int _proj_H;        // 投影伪图像的行数，对应于垂直分辨率
     int _proj_W;        // 投影伪图像的列数，对应于水平分辨率
     float _max_range;     // 深度的最大有效距离
